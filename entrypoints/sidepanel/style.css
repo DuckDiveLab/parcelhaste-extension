@@ -29,3 +29,30 @@ textarea {
 button {
   font: inherit;
 }
+
+label {
+  display: block;
+  margin-top: 8px;
+}
+
+input {
+  width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+}
+
+.summary {
+  font-weight: 600;
+}
+
+.issues {
+  padding-left: 18px;
+}
+
+.issue-error {
+  color: #b42318;
+}
+
+.issue-warning {
+  color: #b54708;
+}
