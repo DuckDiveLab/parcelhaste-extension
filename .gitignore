@@ -1,0 +1,24 @@
+# Dependencies and build output
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Order and customer data must never be committed. Only synthetic data under
+# fixtures/ is allowed; harness-check scans it for real-looking personal data.
+*.tsv
+*.xlsx
+*.xls
+*.csv
+*.pdf
+!fixtures/**/*.tsv
+!fixtures/**/*.xlsx
+!fixtures/**/*.csv
+!fixtures/**/*.pdf
+
+# Local tool state
+.claude/settings.local.json
+.idea/
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+*.log
