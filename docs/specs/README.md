@@ -10,7 +10,7 @@ one. `harness-check` links criteria to tests for approved and implemented specs.
 | Spec | Title | Status |
 |---|---|---|
 | [001](001-shipment-model-and-carrier-contract.md) | Shipment model and carrier adapter contract | draft |
-| [002](002-row-input-from-clipboard.md) | Row input from clipboard | draft |
+| [002](002-row-input-from-clipboard.md) | Row input from clipboard | approved |
 
 ## Roadmap
 

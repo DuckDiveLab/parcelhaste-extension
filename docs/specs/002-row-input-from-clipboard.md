@@ -1,7 +1,7 @@
 ---
 id: "002"
 title: Row input from clipboard
-status: draft
+status: approved
 ---
 
 # Row input from clipboard
