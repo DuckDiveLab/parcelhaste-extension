@@ -7,11 +7,11 @@ maintainer has not confirmed yet.
 
 - Shipment → one parcel to one recipient, built from one or more input rows that share an order id; `Shipment` in `src/core/shipment.ts`.
 - Item → one product line in a shipment: SKU, description, quantity, unit price, optional weight, HS code and origin.
-- Parcel → the physical package: weight in grams and optional dimensions in centimetres.
+- Parcel → the physical package: weight in grams and optional dimensions in centimetres. A typed weight below 50 is read as kilograms (verify).
 - Order id → the source system's identifier of the order; rows with `Multiple=TRUE` share one order id (verify: always consecutive rows).
 - Recipient → the delivery address and contact: name, address lines, city, state, postal code, country code, phone, email.
 - Sender → the shop shipping from Cyprus (EU); configured once in the extension, not per row (verify).
-- Row → one tab-separated line copied from the maintainer's export tool; the provisional 22-column layout is in `fixtures/rows/`.
+- Row → one tab-separated line copied from the Cyprus Post shipping export (22 columns, spec 002); `fixtures/rows/` has examples.
 - Batch → the shipments loaded together; today one pasted row, later a dropped file (roadmap spec 008).
 - Run → one execution of a batch against one carrier; `Run` in `src/core/queue.ts`.
 - Queue → the ordered jobs of a run, executed one at a time in the side panel (ADR-0003).
