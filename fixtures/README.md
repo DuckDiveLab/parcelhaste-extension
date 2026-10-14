@@ -14,7 +14,7 @@ Rules:
 
 Layout:
 
-- `rows/` input rows in the provisional 22-column layout (TSV). The final row format comes
-  from the maintainer's export tool and will replace this.
+- `rows/` input rows as the Cyprus Post shipping export produces them (22 columns, TSV); the
+  layout is documented in spec 002. `Package weight` is empty in the real export.
 - `shipments/` `Shipment` JSON used by the core tests and the carrier contract suite.
 - `carriers/<id>/` portal fixtures per carrier (see each carrier's README).
