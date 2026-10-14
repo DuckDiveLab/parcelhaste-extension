@@ -1,7 +1,7 @@
 ---
 id: "002"
 title: Row input from clipboard
-status: approved
+status: implemented
 ---
 
 # Row input from clipboard
@@ -112,6 +112,7 @@ extension storage (a rule for the build, not a testable criterion).
 
 ## Test plan
 
-- `src/inputs/row.test.ts`: AC-002-1 to AC-002-14, with rows from
+- `src/inputs/row.test.ts`: AC-002-1 to AC-002-13, with rows from
   `fixtures/rows/cyprus-post-export.tsv`.
+- `src/inputs/column-map.test.ts`: AC-002-14.
 - `src/inputs/row-view.test.ts` (pure view model, no DOM): AC-002-15.
