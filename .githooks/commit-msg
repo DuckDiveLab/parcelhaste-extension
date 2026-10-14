@@ -1,0 +1,3 @@
+#!/bin/sh
+# Enforce Conventional Commits. Same check runs in CI over every PR commit.
+exec node scripts/commitlint.ts "$1"

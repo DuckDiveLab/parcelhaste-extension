@@ -1,0 +1,48 @@
+name: Bug report
+description: Something the extension does wrong.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Never paste real order or customer data. Replace names, addresses, phones and emails with
+        synthetic values (see fixtures/README.md).
+  - type: input
+    id: carrier
+    attributes:
+      label: Carrier
+      placeholder: cyprus-post
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and version
+      placeholder: Chrome 142 / Firefox 134
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Extension version
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: 1. Paste the row ... 2. Press Create ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual, with the error text or screenshot (sanitized)
+    validations:
+      required: true

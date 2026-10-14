@@ -1,0 +1,23 @@
+{
+  "orderId": "TEST-ORDER-0001",
+  "recipient": {
+    "name": "Test Recipient",
+    "line1": "1 Example Street",
+    "city": "Berlin",
+    "postalCode": "10115",
+    "countryCode": "DE",
+    "phone": "+44 7700 900123",
+    "email": "buyer1@example.com"
+  },
+  "parcel": { "weightGrams": 250 },
+  "items": [
+    {
+      "sku": "WIDGET-001",
+      "description": "Example Widget",
+      "quantity": 1,
+      "unitPrice": { "amount": 12.5, "currency": "EUR" }
+    }
+  ],
+  "shippingPrice": { "amount": 4.9, "currency": "EUR" },
+  "sourceRows": [2]
+}

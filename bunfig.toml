@@ -1,0 +1,7 @@
+# Supply-chain hardening. See docs/adr/0007-supply-chain-hardening.md.
+[install]
+# Never install a version published less than 3 days (259200 s) ago, so that
+# compromised releases have time to be reported and yanked first.
+minimumReleaseAge = 259200
+# Write exact versions into package.json; the lockfile pins the rest.
+exact = true

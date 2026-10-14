@@ -1,0 +1,31 @@
+:root {
+  color-scheme: light dark;
+  font:
+    14px / 1.4 system-ui,
+    sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 12px;
+}
+
+h1 {
+  font-size: 16px;
+  margin: 0 0 4px;
+}
+
+.muted {
+  opacity: 0.7;
+}
+
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 72px;
+  font: inherit;
+}
+
+button {
+  font: inherit;
+}

@@ -1,0 +1,10 @@
+{
+  // Browser code: the extension itself. No Node globals or modules here.
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "types": ["chrome"]
+  },
+  "include": ["src/**/*.ts", "entrypoints/**/*.ts"],
+  "exclude": ["**/*.test.ts", "**/testing.ts"]
+}

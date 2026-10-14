@@ -1,0 +1,17 @@
+# Maintainers review everything that shapes the harness, the decisions and the dependencies.
+# The team @DuckDiveLab/parcelhaste-maintainers must exist in the organisation.
+AGENTS.md                 @DuckDiveLab/parcelhaste-maintainers
+CLAUDE.md                 @DuckDiveLab/parcelhaste-maintainers
+/CONTEXT.md               @DuckDiveLab/parcelhaste-maintainers
+/docs/adr/                @DuckDiveLab/parcelhaste-maintainers
+/docs/specs/              @DuckDiveLab/parcelhaste-maintainers
+/.agents/                 @DuckDiveLab/parcelhaste-maintainers
+/.claude/                 @DuckDiveLab/parcelhaste-maintainers
+/.github/                 @DuckDiveLab/parcelhaste-maintainers
+/.githooks/               @DuckDiveLab/parcelhaste-maintainers
+/biome.jsonc              @DuckDiveLab/parcelhaste-maintainers
+/tsconfig*.json           @DuckDiveLab/parcelhaste-maintainers
+/scripts/                 @DuckDiveLab/parcelhaste-maintainers
+/package.json             @DuckDiveLab/parcelhaste-maintainers
+/bun.lock                 @DuckDiveLab/parcelhaste-maintainers
+/bunfig.toml              @DuckDiveLab/parcelhaste-maintainers

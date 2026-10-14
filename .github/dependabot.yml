@@ -1,0 +1,26 @@
+# ADR-0007: weekly, grouped, with the same 3-day cooldown as bunfig.toml.
+version: 2
+updates:
+  - package-ecosystem: bun
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    cooldown:
+      default-days: 3
+    groups:
+      dependencies:
+        patterns: ["*"]
+    labels: [dependencies, no-spec]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    cooldown:
+      default-days: 3
+    groups:
+      actions:
+        patterns: ["*"]
+    labels: [dependencies, no-spec]

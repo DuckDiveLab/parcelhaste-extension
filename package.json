@@ -1,0 +1,37 @@
+{
+  "name": "parcelhaste-extension",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Browser extension that creates shipping labels and customs declarations on carrier web portals from pasted order rows.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "packageManager": "bun@1.4.3",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "prepare": "node scripts/install-hooks.ts",
+    "dev": "node scripts/build.ts --browser chrome --watch",
+    "dev:firefox": "node scripts/build.ts --browser firefox --watch",
+    "build": "node scripts/build.ts --browser chrome --browser firefox --zip",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.node.json",
+    "test": "node --test \"src/**/*.test.ts\" \"scripts/**/*.test.ts\" \"entrypoints/**/*.test.ts\"",
+    "commitlint": "node scripts/commitlint.ts",
+    "harness:sync": "node scripts/harness-sync.ts",
+    "harness:check": "node scripts/harness-check.ts",
+    "check": "bun run lint && bun run typecheck && bun run test && bun run harness:check"
+  },
+  "trustedDependencies": [],
+  "dependencies": {
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.15",
+    "@types/chrome": "0.3.5",
+    "@types/node": "24.19.2",
+    "esbuild": "0.28.2",
+    "typescript": "7.0.2"
+  }
+}
