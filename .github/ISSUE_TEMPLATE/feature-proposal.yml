@@ -1,0 +1,29 @@
+name: Feature proposal
+description: A behaviour change. Accepted proposals become a spec in docs/specs/.
+labels: [proposal]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What is slow, wrong or impossible today, and for whom.
+    validations:
+      required: true
+  - type: textarea
+    id: behaviour
+    attributes:
+      label: Proposed behaviour
+      description: What the user does and sees. Use the terms from CONTEXT.md.
+    validations:
+      required: true
+  - type: textarea
+    id: criteria
+    attributes:
+      label: Draft acceptance criteria (EARS)
+      placeholder: |
+        - When <trigger>, the <system> shall <response>.
+        - If <unwanted condition>, then the <system> shall <response>.
+  - type: textarea
+    id: out
+    attributes:
+      label: Out of scope

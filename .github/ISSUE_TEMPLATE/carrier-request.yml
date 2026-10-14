@@ -1,0 +1,41 @@
+name: Carrier request
+description: Ask for a new carrier, or offer to add one.
+labels: [carrier]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Carrier name and country
+      placeholder: Royal Mail, United Kingdom
+    validations:
+      required: true
+  - type: input
+    id: portal
+    attributes:
+      label: Portal URL (login page is enough)
+    validations:
+      required: true
+  - type: dropdown
+    id: api
+    attributes:
+      label: Does the carrier offer an official label API?
+      options: [No, Yes (public), Yes (contract customers only), Unknown]
+    validations:
+      required: true
+  - type: textarea
+    id: services
+    attributes:
+      label: Services you use (letter post, parcel, tracked, untracked) and the customs forms involved
+    validations:
+      required: true
+  - type: dropdown
+    id: fixtures
+    attributes:
+      label: Can you provide sanitized portal fixtures (HTML of the form pages, a label PDF, a HAR without cookies)?
+      options: ["Yes", "No", "With help"]
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else (volume, quirks, time zone)

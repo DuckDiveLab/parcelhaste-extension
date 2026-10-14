@@ -1,0 +1,29 @@
+name: PR references a spec
+
+on:
+  pull_request:
+    types: [opened, edited, labeled, unlabeled, synchronize, reopened]
+
+permissions:
+  pull-requests: read
+
+jobs:
+  spec:
+    name: "Spec: NNN in the body, or the no-spec label"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check
+        env:
+          BODY: ${{ github.event.pull_request.body }}
+          LABELS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
+        run: |
+          if printf '%s' "$LABELS" | tr ',' '\n' | grep -qx 'no-spec'; then
+            echo "no-spec label present"
+            exit 0
+          fi
+          if printf '%s' "$BODY" | grep -Eq '(^|[^A-Za-z])Spec: ?[0-9]{3}'; then
+            echo "spec reference found"
+            exit 0
+          fi
+          echo "::error::The PR body must contain 'Spec: NNN' (see docs/specs/) or the PR must carry the 'no-spec' label."
+          exit 1
