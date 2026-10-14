@@ -15,6 +15,11 @@ dist/
 !fixtures/**/*.csv
 !fixtures/**/*.pdf
 
+# Raw portal captures are never committed; run scripts/sanitize-capture.ts first.
+fixtures/**/raw/
+*.har
+!fixtures/**/*.har
+
 # Local tool state
 .claude/settings.local.json
 .idea/
