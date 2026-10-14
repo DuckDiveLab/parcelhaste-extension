@@ -32,11 +32,12 @@ built-in test runner.
 - Language: TypeScript, strict, latest stable (7.x, the native compiler). Only erasable syntax
   (`erasableSyntaxOnly`), relative imports with the `.ts` extension, so Node runs the files
   as written and esbuild bundles them without a transform step.
-- Bundler: esbuild through its JS API in `scripts/build.ts`. One manifest definition rendered per
-  browser (`scripts/lib/manifest.ts`), zips written by `scripts/lib/zip.ts` on Node's `zlib`.
+- Bundler: esbuild through its JS API in `scripts/build.ts`. The manifest is one function in
+  `scripts/lib/manifest.ts`; the zip is written by `scripts/lib/zip.ts` on Node's `zlib`.
   Output is unminified so store reviewers can read it.
-- Targets: Chrome MV3 primary; Firefox and Edge built from the same code. Firefox uses
-  `background.scripts` and `sidebar_action`, Chrome `service_worker` and `side_panel`.
+- Target: Chrome, Manifest V3, and nothing else. The maintainer ruled Firefox and Edge out on
+  2026-10-14; the bootstrap briefly carried a Firefox manifest and a web-ext lint step, both
+  removed. Adding a browser later is a new ADR, not a flag.
 - UI: plain DOM in `entrypoints/`, one render function per view, no framework. Reassess only if
   the UI outgrows this; the next step would be Preact, not React.
 - Runtime dependency: zod only, for the Shipment schema shared by inputs, carriers and tests.

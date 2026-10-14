@@ -8,7 +8,7 @@ label PDF. A human only handles exceptions.
 **Status: pre-alpha.** The harness, the data model and a Cyprus Post stub exist; no carrier works
 yet. First carrier: Cyprus Post (ePost portal). More carriers are welcome from the community.
 
-- Chrome MV3 first; Firefox and Edge are built from the same code.
+- Chrome only, Manifest V3. Other browsers are out of scope (ADR-0002).
 - Few dependencies on purpose: one at runtime (zod), four for development.
 - Labels land under `Downloads/ParcelHaste/<carrier>/<date>/<order-id>_<tracking>.pdf`.
 
@@ -18,7 +18,7 @@ yet. First carrier: Cyprus Post (ePost portal). More carriers are welcome from t
 bun install --frozen-lockfile   # Bun 1.4.3 (pinned), Node 24
 bun run dev                     # builds dist/chrome-mv3 and watches; load it unpacked
 bun run check                   # lint, typecheck, tests, harness-check: the one gate
-bun run build                   # zips for Chrome and Firefox in dist/
+bun run build                   # Chrome zip in dist/
 ```
 
 ## Contribute, with any agent

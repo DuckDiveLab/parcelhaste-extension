@@ -6,10 +6,10 @@ Vocabulary: CONTEXT.md. Decisions: `docs/adr/`. Intent: `docs/specs/`. Lessons: 
 ## Commands
 
 - Install: `bun install --frozen-lockfile` (Bun 1.4.3 pinned in `packageManager`, Node 24 for tools).
-- Dev: `bun run dev` builds `dist/chrome-mv3/` and watches; load it unpacked and press reload after
-  changes. `bun run dev:firefox` for `dist/firefox-mv3/`.
+- Dev: `bun run dev` builds `dist/chrome-mv3/` and watches; load it unpacked in Chrome and press
+  reload after changes. Chrome is the only target.
 - The one gate: `bun run check` = `biome check` → `tsc --noEmit` (two configs) → `node --test` →
-  `harness-check`. Tests alone: `bun run test`. Zips for both browsers: `bun run build`.
+  `harness-check`. Tests alone: `bun run test`. Chrome zip: `bun run build`.
 - After editing `.agents/skills/`: `bun run harness:sync` regenerates `.claude/skills/`.
 
 ## The loop
