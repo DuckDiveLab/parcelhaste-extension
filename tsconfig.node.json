@@ -5,5 +5,10 @@
     "lib": ["ES2023"],
     "types": ["node"]
   },
-  "include": ["scripts/**/*.ts", "src/**/*.test.ts", "entrypoints/**/*.test.ts"]
+  "include": [
+    "scripts/**/*.ts",
+    "src/**/*.test.ts",
+    "src/**/testing.ts",
+    "entrypoints/**/*.test.ts"
+  ]
 }

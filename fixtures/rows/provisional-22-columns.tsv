@@ -1,0 +1,4 @@
+Tracking number	Multiple	order-id	ship-country	Package weight	product-name	SKU	quantity-purchased	currency	item-price	shipping-price	postage-item-price	buyer-phone-number	buyer-email	recipient-name	ship-postal-code	ship-city	ship-state	ship-address-1	ship-address-2	ship-address-3	ship-country-code
+	FALSE	TEST-ORDER-0001	Germany	250	Example Widget	WIDGET-001	1	EUR	12.50	4.90	0.00	+44 7700 900123	buyer1@example.com	Test Recipient	10115	Berlin		1 Example Street			DE
+	TRUE	TEST-ORDER-0002	United Kingdom	600	Example Widget	WIDGET-001	2	EUR	12.50	6.90	0.00	+44 7700 900456	buyer2@example.com	Second Tester	SW1A 1AA	London		2 Sample Road	Flat 3		GB
+	TRUE	TEST-ORDER-0002	United Kingdom	600	Example Gadget	GADGET-002	1	EUR	20.00	6.90	0.00	+44 7700 900456	buyer2@example.com	Second Tester	SW1A 1AA	London		2 Sample Road	Flat 3		GB

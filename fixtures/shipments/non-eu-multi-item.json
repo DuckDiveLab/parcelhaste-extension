@@ -1,0 +1,37 @@
+{
+  "orderId": "TEST-ORDER-0002",
+  "recipient": {
+    "name": "Second Tester",
+    "line1": "2 Sample Road",
+    "line2": "Flat 3",
+    "city": "London",
+    "postalCode": "SW1A 1AA",
+    "countryCode": "GB",
+    "phone": "+44 7700 900456",
+    "email": "buyer2@example.com"
+  },
+  "parcel": { "weightGrams": 600 },
+  "items": [
+    {
+      "sku": "WIDGET-001",
+      "description": "Example Widget",
+      "quantity": 2,
+      "unitPrice": { "amount": 12.5, "currency": "EUR" },
+      "unitWeightGrams": 200,
+      "hsCode": "392690",
+      "originCountryCode": "CY"
+    },
+    {
+      "sku": "GADGET-002",
+      "description": "Example Gadget",
+      "quantity": 1,
+      "unitPrice": { "amount": 20, "currency": "EUR" },
+      "unitWeightGrams": 150,
+      "hsCode": "851830",
+      "originCountryCode": "CY"
+    }
+  ],
+  "shippingPrice": { "amount": 6.9, "currency": "EUR" },
+  "customs": { "category": "sale_of_goods", "currency": "EUR" },
+  "sourceRows": [3, 4]
+}
