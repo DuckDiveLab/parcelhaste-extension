@@ -46,6 +46,8 @@ maintainer has not confirmed yet.
 - Input → anything that enters the extension: the clipboard row, later files (`src/inputs/`).
 - Output → anything that leaves it: label files, the merged PDF, the tracking export (`src/outputs/`).
 - Tracking export → the file uploaded to the marketplace for shipping confirmation (roadmap spec 007; needs an order-item id the export lacks).
+- Validation report → the issues a parser returns next to a shipment: errors block Create, warnings inform (`RowIssue` in `src/inputs/row.ts`).
+- Column map → the export's header list in `src/inputs/column-map.ts`, the only place that knows which cell is which.
 - Fixture → synthetic test data under `fixtures/`; never real.
 - Spec → `docs/specs/NNN-slug.md` with EARS acceptance criteria `AC-NNN-n`.
 - ADR → a decision record in `docs/adr/`.
