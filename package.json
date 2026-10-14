@@ -19,7 +19,9 @@
     "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.node.json",
     "test": "node --test \"src/**/*.test.ts\" \"scripts/**/*.test.ts\" \"entrypoints/**/*.test.ts\"",
     "commitlint": "node scripts/commitlint.ts",
-    "harness:sync": "node scripts/harness-sync.ts"
+    "harness:sync": "node scripts/harness-sync.ts",
+    "harness:check": "node scripts/harness-check.ts",
+    "check": "bun run lint && bun run typecheck && bun run test && bun run harness:check"
   },
   "trustedDependencies": [],
   "dependencies": {
