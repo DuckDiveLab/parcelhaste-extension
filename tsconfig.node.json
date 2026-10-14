@@ -1,0 +1,9 @@
+{
+  // Node code: build and harness scripts, and all unit tests (node:test).
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ES2023"],
+    "types": ["node"]
+  },
+  "include": ["scripts/**/*.ts", "src/**/*.test.ts", "entrypoints/**/*.test.ts"]
+}

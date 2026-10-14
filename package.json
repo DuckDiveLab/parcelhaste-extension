@@ -9,7 +9,15 @@
   "engines": {
     "node": ">=24"
   },
-  "scripts": {},
+  "scripts": {
+    "prepare": "node scripts/install-hooks.ts",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.node.json",
+    "test": "node --test \"src/**/*.test.ts\" \"scripts/**/*.test.ts\" \"entrypoints/**/*.test.ts\"",
+    "commitlint": "node scripts/commitlint.ts",
+    "harness:sync": "node scripts/harness-sync.ts"
+  },
   "trustedDependencies": [],
   "dependencies": {
     "zod": "4.6.5"
@@ -17,7 +25,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.5.15",
     "@types/chrome": "0.3.5",
-    "@types/node": "24",
+    "@types/node": "24.19.2",
     "esbuild": "0.28.2",
     "typescript": "7.0.2"
   }

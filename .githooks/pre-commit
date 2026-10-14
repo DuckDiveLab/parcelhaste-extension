@@ -1,0 +1,4 @@
+#!/bin/sh
+# Lint and format-check the staged files with Biome.
+# Installed by `bun install` through the `prepare` script (scripts/install-hooks.ts).
+exec bunx biome check --staged --no-errors-on-unmatched

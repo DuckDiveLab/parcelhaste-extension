@@ -1,0 +1,3 @@
+#!/bin/sh
+# The one gate: lint, typecheck, tests and harness-check must pass before pushing.
+exec bun run check
