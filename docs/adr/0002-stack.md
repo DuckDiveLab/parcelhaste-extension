@@ -1,7 +1,7 @@
 # ADR-0002: Stack: TypeScript, esbuild, plain DOM, Bun as package manager, Node as runtime
 
-- Status: accepted (rewritten 2026-10-14 after the stack review; re-acceptance by the maintainer
-  pending)
+- Status: accepted (rewritten after the stack review and re-accepted by the maintainer on
+  2026-10-14)
 - Date: 2026-10-14
 
 ## Context
