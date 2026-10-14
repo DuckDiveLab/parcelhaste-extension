@@ -1,0 +1,25 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node scripts/claude-format-hook.ts"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -n \"$CLAUDE_CODE_REMOTE\" ]; then bun install --frozen-lockfile; fi"
+          }
+        ]
+      }
+    ]
+  }
+}
