@@ -11,6 +11,11 @@ updates:
     groups:
       dependencies:
         patterns: ["*"]
+    ignore:
+      # @types/node follows the Node major pinned in engines.node and .node-version;
+      # it moves by hand when the project moves to the next Active LTS.
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
     labels: [dependencies, no-spec]
 
   - package-ecosystem: github-actions

@@ -18,6 +18,5 @@ closed panel can resume.
 ## Consequences
 
 - Closing the side panel pauses the run; the UI must say so.
-- Firefox uses `sidebar_action` for the same page; the orchestrator code is shared.
 - Content scripts for the `dom` strategy are injected and driven from the panel through the
   extension messaging APIs.

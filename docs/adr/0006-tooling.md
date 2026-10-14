@@ -23,10 +23,10 @@ API is published").
 | Import boundaries | `scripts/harness/check-imports.ts` | 150 tested lines; no TS-version coupling |
 | Git hooks | `.githooks/` + `core.hooksPath` set by the `prepare` script | No tool needed |
 | Commit messages | `scripts/lib/commit-message.ts`, in the hook and in CI | A regex, not 48 packages |
-| Firefox lint | `web-ext lint` via pinned `bunx` in CI only | 257 packages stay out of the lockfile |
 | End-to-end | Playwright, added with spec 003, CI-only | Nothing to test end to end yet |
 
-Rejected: WXT and Vite (ADR-0002), React, Vitest, dependency-cruiser, lefthook, commitlint.
+Rejected: WXT and Vite (ADR-0002), React, Vitest, dependency-cruiser, lefthook, commitlint, and
+web-ext (no Firefox target).
 
 ## Consequences
 

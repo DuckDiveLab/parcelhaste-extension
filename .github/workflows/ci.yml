@@ -39,11 +39,8 @@ jobs:
       - name: The one gate
         run: bun run check
 
-      - name: Build Chrome and Firefox zips
+      - name: Build the Chrome zip
         run: bun run build
-
-      - name: Lint the Firefox build (web-ext, pinned, CI-only)
-        run: bunx web-ext@10.7.0 lint --source-dir dist/firefox-mv3
 
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:

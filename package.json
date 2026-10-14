@@ -11,9 +11,8 @@
   },
   "scripts": {
     "prepare": "node scripts/install-hooks.ts",
-    "dev": "node scripts/build.ts --browser chrome --watch",
-    "dev:firefox": "node scripts/build.ts --browser firefox --watch",
-    "build": "node scripts/build.ts --browser chrome --browser firefox --zip",
+    "dev": "node scripts/build.ts --watch",
+    "build": "node scripts/build.ts --zip",
     "lint": "biome check .",
     "format": "biome check --write .",
     "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.node.json",
