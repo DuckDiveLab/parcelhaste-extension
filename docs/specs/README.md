@@ -11,7 +11,7 @@ one. `harness-check` links criteria to tests for approved and implemented specs.
 |---|---|---|
 | [001](001-shipment-model-and-carrier-contract.md) | Shipment model and carrier adapter contract | draft |
 | [002](002-row-input-from-clipboard.md) | Row input from clipboard | implemented |
-| [004](004-queue-runner-and-error-handling.md) | Queue runner and error handling | approved |
+| [004](004-queue-runner-and-error-handling.md) | Queue runner and error handling | implemented |
 
 ## Roadmap
 

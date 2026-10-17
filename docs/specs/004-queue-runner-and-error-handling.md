@@ -1,12 +1,12 @@
 ---
 id: "004"
 title: Queue runner and error handling
-status: approved
+status: implemented
 ---
 
 # Queue runner and error handling
 
-Approved by the maintainer on 2026-10-17 ("approve 004").
+Approved by the maintainer on 2026-10-17 ("approve 004"); implemented the same day.
 
 ## Context
 

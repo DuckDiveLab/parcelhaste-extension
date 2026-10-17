@@ -17,7 +17,7 @@ maintainer has not confirmed yet.
 - Batch → the shipments loaded together; today one pasted row, later a dropped file (roadmap spec 008).
 - Run → one execution of a batch against one carrier; `Run` in `src/core/queue.ts`.
 - Queue → the ordered jobs of a run, executed one at a time in the side panel (ADR-0003).
-- Job → one shipment moving through queued → filling → submitting → capturing → downloading → done, failed or skipped.
+- Job → one shipment moving through queued → filling → submitting → capturing → downloading → done, failed, skipped or interrupted.
 - Exception → a failed job a human handles; automatic retries happen only for errors marked `retryable` (spec 004).
 - Runner → the queue runner in `src/core/queue.ts`: drives jobs through the adapter one at a time, retries, cancels, pauses (spec 004).
 - Label sink → the interface the runner hands a label to; spec 005 implements it with the Downloads folder.

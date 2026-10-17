@@ -1,5 +1,6 @@
 // The carrier adapter contract (ADR-0004). Every carrier under src/carriers/<id>/
 // implements CarrierAdapter and passes runCarrierContract() from ./testing.ts.
+import type { AdapterStage } from "../../core/queue.ts";
 import type { Shipment } from "../../core/shipment.ts";
 
 /** How the adapter talks to the carrier: fill the page, replay its requests, or call an API. */
@@ -56,6 +57,8 @@ export interface LabelResult {
 export interface CarrierContext {
   /** Aborted when the user stops the run. Adapters must stop at the next safe point. */
   signal: AbortSignal;
+  /** Reports `submitting` when the form goes off and `capturing` while the numbers are read. */
+  onStage?: (stage: AdapterStage) => void;
 }
 
 export type SupportVerdict = { supported: true } | { supported: false; reason: string };
