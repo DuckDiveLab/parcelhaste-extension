@@ -1,5 +1,8 @@
 # Clipboard rows from the Excel export
 
+Superseded on 2026-10-17: the real row comes from the order tool, not Excel. See
+`2026-10-17-row-contract-by-header-name.md`. The Excel lessons below no longer apply.
+
 Spec: 002 · PR: spec 002 implementation
 
 ## Problem
