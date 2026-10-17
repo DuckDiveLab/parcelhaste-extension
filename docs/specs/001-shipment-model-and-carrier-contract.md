@@ -18,7 +18,8 @@ the spec until it is approved.
 
 In: the `Shipment` schema and its parts (`Address`, `Parcel`, `Item`, `Money`, `CustomsInfo`), the
 EU membership rule for customs, the `CarrierAdapter` interface, `CarrierError` codes, `LabelResult`,
-and the shared contract test suite. Out: parsing rows (002), running the queue (004), saving files
+and the shared contract test suite. `CarrierContext` carries `signal` and an optional `onStage`
+callback through which an adapter reports `submitting` and `capturing` to the runner (spec 004). Out: parsing rows (002), running the queue (004), saving files
 (005), SKU profiles (006).
 
 ## Model
