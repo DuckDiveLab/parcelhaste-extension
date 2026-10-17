@@ -20,7 +20,8 @@ const TEXT_EXTENSIONS = new Set([
 ]);
 const EMAIL = /[A-Za-z0-9._%+-]+@([A-Za-z0-9.-]+\.[A-Za-z]{2,})/g;
 const RESERVED_DOMAIN = /(^|\.)(example\.(com|net|org)|[a-z0-9-]+\.(example|test|invalid))$/i;
-const PHONE_LIKE = /\+?\d[\d ().-]{6,}\d/g;
+/** A digit run glued to letters (IM1234567890, RR123456789CY) is an identifier, not a phone. */
+const PHONE_LIKE = /(?<![A-Za-z\d])\+?\d[\d ().-]{6,}\d/g;
 /** Rejects runs that are really prices or decimals, e.g. "12.50 4.90 0.00". */
 const DECIMAL = /\d\.\d/;
 /** UK Ofcom drama range 07700 900000-900999 and the NANP 555-0100 to 555-0199 block. */

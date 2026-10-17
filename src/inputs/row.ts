@@ -1,4 +1,4 @@
-// Turns pasted export rows into one Shipment plus a validation report (spec 002).
+// Turns the pasted "Make label" rows into shipments plus a validation report (spec 002).
 import {
   type Item,
   requiresCustomsDeclaration,
@@ -6,55 +6,52 @@ import {
   ShipmentSchema,
 } from "../core/shipment.ts";
 import {
-  EXPORT_COLUMNS,
-  type ExportColumn,
-  type ExportRow,
-  isHeaderRow,
-  OPTIONAL_CONTACT_COLUMNS,
-  RECIPIENT_IDENTITY_COLUMNS,
-  REQUIRED_COLUMNS,
-  toExportRow,
+  isHeader,
+  OPTIONAL_CONTACT_FIELDS,
+  REQUIRED_FIELDS,
+  type RowField,
+  type RowRecord,
+  readHeader,
+  toRecord,
 } from "./column-map.ts";
 
 export type IssueCode =
   | "empty-paste"
+  | "header-required"
   | "cell-count"
-  | "already-shipped"
-  | "required-cell-empty"
-  | "optional-cell-empty"
-  | "one-order-per-paste"
+  | "required-field-empty"
+  | "optional-field-empty"
   | "country-code"
-  | "recipient-mismatch"
-  | "number-invalid"
-  | "currency-defaulted"
-  | "weight-required"
   | "weight-invalid"
-  | "schema";
+  | "number-invalid"
+  | "quantity-mismatch"
+  | "declared-value-required"
+  | "schema"
+  | "one-row-per-paste";
 
 export interface RowIssue {
   level: "error" | "warning";
   code: IssueCode;
   message: string;
-  /** 1-based line in the pasted text, header included. */
+  /** 1-based line in the pasted text; the header is line 1. */
   line?: number;
-  column?: ExportColumn;
-}
-
-export interface RowParseOptions {
-  /** Weight typed in the panel; takes precedence over the Package weight cell (AC-002-10). */
-  weight?: string;
+  field?: RowField;
 }
 
 export interface RowParseResult {
-  /** Present only when the report has no errors. */
-  shipment?: Shipment;
+  /** One shipment per data line that passed every check, in line order. */
+  shipments: Shipment[];
+  /** Number of data lines seen, parsed or not. */
+  rows: number;
   issues: RowIssue[];
 }
 
-/** Below this a weight is kilograms, from it on grams (AC-002-11). */
-export const KILOGRAM_THRESHOLD = 50;
+export interface ContentLine {
+  description: string;
+  quantity: number;
+}
 
-/** AC-002-1: rows on CR, LF or CRLF, cells on tabs, empty trailing lines dropped. */
+/** AC-002-1: lines on CR, LF or CRLF, cells on tabs, empty trailing lines dropped. */
 export function splitClipboard(text: string): string[][] {
   const lines = text.split(/\r\n|\r|\n/);
   while (lines.length > 0 && (lines[lines.length - 1] ?? "").trim() === "") {
@@ -63,23 +60,25 @@ export function splitClipboard(text: string): string[][] {
   return lines.map((line) => line.split("\t"));
 }
 
-/** Accepts "12.5", "12.50" and the comma decimal Excel writes in some locales ("12,50"). */
+/** Accepts "12.5", "12.50" and a comma decimal ("12,50"). */
 export function parseNumber(value: string): number | undefined {
   const normalized = value.trim().replace(/^(-?\d+),(\d+)$/, "$1.$2");
   return /^-?\d+(\.\d+)?$/.test(normalized) ? Number(normalized) : undefined;
 }
 
-/** AC-002-11: integer grams, or undefined when the value is not a positive number. */
-export function parseWeightGrams(value: string): number | undefined {
-  const amount = parseNumber(value);
-  if (amount === undefined || amount <= 0) {
-    return undefined;
-  }
-  return Math.round(amount < KILOGRAM_THRESHOLD ? amount * 1000 : amount);
-}
-
-function round2(value: number): number {
-  return Math.round(value * 100) / 100;
+/** AC-002-11: "Washer nozzle x2, Fuel cap x1" → two lines; a part without " xN" counts once. */
+export function parseContents(contents: string): ContentLine[] {
+  return contents
+    .split(",")
+    .map((part) => part.trim())
+    .filter((part) => part !== "")
+    .map((part) => {
+      const match = /^(.*\S)\s+x(\d+)$/.exec(part);
+      const quantity = match?.[2] === undefined ? Number.NaN : Number(match[2]);
+      return Number.isInteger(quantity) && quantity > 0
+        ? { description: match?.[1] ?? part, quantity }
+        : { description: part, quantity: 1 };
+    });
 }
 
 function normalizeCountryCode(value: string): string {
@@ -87,208 +86,199 @@ function normalizeCountryCode(value: string): string {
   return code === "UK" ? "GB" : code;
 }
 
-function comparable(value: string): string {
-  return value.trim().replace(/\s+/g, " ").toLowerCase();
-}
-
-interface Line {
+interface LineContext {
   line: number;
-  row: ExportRow;
+  row: RowRecord;
+  missing: ReadonlySet<RowField>;
+  issues: RowIssue[];
 }
 
-export function parseExportRows(text: string, options: RowParseOptions = {}): RowParseResult {
-  const issues: RowIssue[] = [];
-  const fail = (code: IssueCode, message: string, where: Partial<RowIssue> = {}): void => {
-    issues.push({ level: "error", code, message, ...where });
+function parseLine(context: LineContext): Shipment | undefined {
+  const { line, row, missing, issues } = context;
+  const fail = (code: IssueCode, message: string, field?: RowField): void => {
+    issues.push({ level: "error", code, message, line, ...(field !== undefined && { field }) });
   };
-  const warn = (code: IssueCode, message: string, where: Partial<RowIssue> = {}): void => {
-    issues.push({ level: "warning", code, message, ...where });
+  const warn = (code: IssueCode, message: string, field?: RowField): void => {
+    issues.push({ level: "warning", code, message, line, ...(field !== undefined && { field }) });
   };
-  const hasErrors = (): boolean => issues.some((issue) => issue.level === "error");
+  const before = issues.length;
 
-  const cellLines = splitClipboard(text);
-  let firstLine = 1;
-  if (cellLines.length > 0 && isHeaderRow(cellLines[0] ?? [])) {
-    cellLines.shift();
-    firstLine = 2;
-  }
-  if (cellLines.length === 0) {
-    fail("empty-paste", "Paste one order's row (or rows) from the shipping export.");
-    return { issues };
-  }
-
-  const lines: Line[] = [];
-  cellLines.forEach((cells, index) => {
-    const line = firstLine + index;
-    if (cells.length !== EXPORT_COLUMNS.length) {
-      fail(
-        "cell-count",
-        `Line ${line} has ${cells.length} cells, expected ${EXPORT_COLUMNS.length}.`,
-        { line },
-      );
-      return;
+  for (const field of REQUIRED_FIELDS) {
+    if (row[field] === "") {
+      const where = missing.has(field) ? " (not in the header)" : "";
+      fail("required-field-empty", `Line ${line}: ${field} is empty${where}.`, field);
     }
-    lines.push({ line, row: toExportRow(cells) });
-  });
-  if (hasErrors()) {
-    return { issues };
   }
-  const first = lines[0] as Line;
-
-  for (const { line, row } of lines) {
-    if (row["Tracking number"] !== "") {
-      fail(
-        "already-shipped",
-        `Line ${line} already has tracking number ${row["Tracking number"]}.`,
-        {
-          line,
-          column: "Tracking number",
-        },
-      );
-    }
-    for (const column of REQUIRED_COLUMNS) {
-      if (row[column] === "") {
-        fail("required-cell-empty", `Line ${line}: ${column} is empty.`, { line, column });
-      }
+  for (const field of OPTIONAL_CONTACT_FIELDS) {
+    if (row[field] === "") {
+      warn("optional-field-empty", `Line ${line}: ${field} is empty.`, field);
     }
   }
 
-  const orderIds = [...new Set(lines.map(({ row }) => row["order-id"]).filter((id) => id !== ""))];
-  if (orderIds.length > 1) {
-    fail("one-order-per-paste", `one order per paste: found ${orderIds.join(", ")}.`, {
-      column: "order-id",
-    });
-  }
-
-  const countryCode = normalizeCountryCode(first.row["ship-country-code"]);
-  if (first.row["ship-country-code"] !== "" && !/^[A-Z]{2}$/.test(countryCode)) {
+  const countryCode = normalizeCountryCode(row["destination.countryCode"]);
+  if (row["destination.countryCode"] !== "" && !/^[A-Z]{2}$/.test(countryCode)) {
     fail(
       "country-code",
-      `ship-country-code "${first.row["ship-country-code"]}" is not a two-letter code.`,
-      {
-        line: first.line,
-        column: "ship-country-code",
-      },
+      `Line ${line}: destination.countryCode "${row["destination.countryCode"]}" is not a two-letter code.`,
+      "destination.countryCode",
     );
   }
 
-  for (const column of RECIPIENT_IDENTITY_COLUMNS) {
-    const values = new Set(lines.map(({ row }) => comparable(row[column])));
-    if (values.size > 1) {
-      fail("recipient-mismatch", `Rows of order ${orderIds[0] ?? ""} disagree on ${column}.`, {
-        column,
-      });
-    }
+  const kilograms = parseNumber(row["weight.kg"]);
+  const weightGrams = kilograms === undefined ? undefined : Math.round(kilograms * 1000);
+  if (row["weight.kg"] !== "" && (weightGrams === undefined || weightGrams < 1)) {
+    fail(
+      "weight-invalid",
+      `Line ${line}: weight.kg "${row["weight.kg"]}" is not a positive weight.`,
+      "weight.kg",
+    );
   }
 
-  for (const column of OPTIONAL_CONTACT_COLUMNS) {
-    if (first.row[column] === "") {
-      warn("optional-cell-empty", `${column} is empty.`, { line: first.line, column });
-    }
+  const quantity = parseNumber(row.quantity);
+  if (
+    row.quantity !== "" &&
+    (quantity === undefined || !Number.isInteger(quantity) || quantity <= 0)
+  ) {
+    fail(
+      "number-invalid",
+      `Line ${line}: quantity "${row.quantity}" is not a positive whole number.`,
+      "quantity",
+    );
   }
 
-  const items: Item[] = [];
-  for (const { line, row } of lines) {
-    const quantity = parseNumber(row["quantity-purchased"]);
-    if (quantity === undefined || !Number.isInteger(quantity) || quantity <= 0) {
-      fail(
-        "number-invalid",
-        `Line ${line}: quantity-purchased "${row["quantity-purchased"]}" is not a positive whole number.`,
-        {
-          line,
-          column: "quantity-purchased",
-        },
-      );
-    }
-    const linePrice = parseNumber(row["item-price"]);
-    if (linePrice === undefined || linePrice < 0) {
-      fail("number-invalid", `Line ${line}: item-price "${row["item-price"]}" is not a price.`, {
-        line,
-        column: "item-price",
-      });
-    }
-    let currency = row.currency.toUpperCase();
-    if (currency === "") {
-      currency = "EUR";
-      warn("currency-defaulted", `Line ${line}: currency is empty, assuming EUR.`, {
-        line,
-        column: "currency",
-      });
-    }
-    if (quantity !== undefined && quantity > 0 && linePrice !== undefined) {
-      items.push({
-        sku: row.SKU,
-        description: row["product-name"],
-        quantity,
-        unitPrice: { amount: round2(linePrice / quantity), currency },
-      });
-    }
-  }
-
-  let shippingPrice: Shipment["shippingPrice"];
-  if (first.row["shipping-price"] !== "") {
-    const amount = parseNumber(first.row["shipping-price"]);
-    if (amount === undefined || amount < 0) {
-      fail("number-invalid", `shipping-price "${first.row["shipping-price"]}" is not a price.`, {
-        line: first.line,
-        column: "shipping-price",
-      });
-    } else {
-      shippingPrice = { amount: round2(amount), currency: items[0]?.unitPrice.currency ?? "EUR" };
-    }
-  }
-
-  const typedWeight = options.weight?.trim() ?? "";
-  const weightSource = typedWeight !== "" ? typedWeight : first.row["Package weight"];
-  let weightGrams: number | undefined;
-  if (weightSource === "") {
-    fail("weight-required", "Type the parcel weight: grams, or kilograms below 50.", {
-      column: "Package weight",
-    });
-  } else {
-    weightGrams = parseWeightGrams(weightSource);
-    if (weightGrams === undefined) {
-      fail("weight-invalid", `Weight "${weightSource}" is not a positive number.`, {
-        column: "Package weight",
-      });
-    }
-  }
-
-  if (hasErrors() || weightGrams === undefined) {
-    return { issues };
+  const contents = parseContents(row.contents);
+  const units = contents.reduce((total, part) => total + part.quantity, 0);
+  if (contents.length > 0 && quantity !== undefined && units !== quantity) {
+    warn(
+      "quantity-mismatch",
+      `Line ${line}: contents add up to ${units} units, quantity says ${quantity}.`,
+      "contents",
+    );
   }
 
   const recipient = {
-    name: first.row["recipient-name"],
-    line1: first.row["ship-address-1"],
-    ...(first.row["ship-address-2"] !== "" && { line2: first.row["ship-address-2"] }),
-    ...(first.row["ship-address-3"] !== "" && { line3: first.row["ship-address-3"] }),
-    city: first.row["ship-city"],
-    ...(first.row["ship-state"] !== "" && { state: first.row["ship-state"] }),
-    ...(first.row["ship-postal-code"] !== "" && { postalCode: first.row["ship-postal-code"] }),
+    name: row["destination.name"],
+    ...(row["destination.company"] !== "" && { company: row["destination.company"] }),
+    line1: row["destination.address1"],
+    ...(row["destination.address2"] !== "" && { line2: row["destination.address2"] }),
+    city: row["destination.city"],
+    ...(row["destination.province"] !== "" && { state: row["destination.province"] }),
+    ...(row["destination.zip"] !== "" && { postalCode: row["destination.zip"] }),
     countryCode,
-    ...(first.row["buyer-phone-number"] !== "" && { phone: first.row["buyer-phone-number"] }),
-    ...(first.row["buyer-email"] !== "" && { email: first.row["buyer-email"] }),
+    ...(row["destination.phone"] !== "" && { phone: row["destination.phone"] }),
+    ...(row["destination.email"] !== "" && { email: row["destination.email"] }),
   };
-  const currency = items[0]?.unitPrice.currency ?? "EUR";
+
+  let customs: Shipment["customs"];
+  if (/^[A-Z]{2}$/.test(countryCode) && requiresCustomsDeclaration({ recipient })) {
+    const currency = row.currencyCode.toUpperCase();
+    const amount = parseNumber(row.declaredValue);
+    if (row.declaredValue === "" || currency === "") {
+      fail(
+        "declared-value-required",
+        `Line ${line}: declaredValue and currencyCode are required outside the EU.`,
+        row.declaredValue === "" ? "declaredValue" : "currencyCode",
+      );
+    } else if (amount === undefined || amount < 0) {
+      fail(
+        "number-invalid",
+        `Line ${line}: declaredValue "${row.declaredValue}" is not an amount.`,
+        "declaredValue",
+      );
+    } else {
+      customs = {
+        category: "sale_of_goods",
+        currency,
+        declaredValue: { amount, currency },
+        ...(row.taxReference !== "" && { taxReference: row.taxReference }),
+      };
+    }
+  }
+
+  if (issues.length > before && issues.slice(before).some((issue) => issue.level === "error")) {
+    return undefined;
+  }
+
+  const items: Item[] = contents.map((part, index) => ({
+    description: part.description,
+    quantity: part.quantity,
+    ...(index === 0 && row.harmonizedSystemCode !== "" && { hsCode: row.harmonizedSystemCode }),
+    ...(index === 0 &&
+      row.countryCodeOfOrigin !== "" && {
+        originCountryCode: row.countryCodeOfOrigin.toUpperCase(),
+      }),
+  }));
   const candidate = {
-    orderId: first.row["order-id"],
+    orderId: row.orderName,
     recipient,
     parcel: { weightGrams },
     items,
-    ...(shippingPrice !== undefined && { shippingPrice }),
-    ...(requiresCustomsDeclaration({ recipient }) && {
-      customs: { category: "sale_of_goods" as const, currency },
+    ...(customs !== undefined && { customs }),
+    ...(row["deliveryMethod.additionalInformation.instructions"] !== "" && {
+      deliveryInstructions: row["deliveryMethod.additionalInformation.instructions"],
     }),
-    sourceRows: lines.map(({ line }) => line),
+    sourceRows: [line],
   };
-
   const parsed = ShipmentSchema.safeParse(candidate);
   if (!parsed.success) {
     for (const issue of parsed.error.issues) {
-      fail("schema", `${issue.path.join(".")}: ${issue.message}`);
+      fail("schema", `Line ${line}: ${issue.path.join(".")}: ${issue.message}`);
     }
-    return { issues };
+    return undefined;
   }
-  return { shipment: parsed.data, issues };
+  return parsed.data;
+}
+
+export function parseRows(text: string): RowParseResult {
+  const issues: RowIssue[] = [];
+  const lines = splitClipboard(text);
+  if (lines.length === 0) {
+    issues.push({
+      level: "error",
+      code: "empty-paste",
+      message: "Paste the row copied at the Make label step.",
+    });
+    return { shipments: [], rows: 0, issues };
+  }
+  const headerCells = lines[0] ?? [];
+  if (!isHeader(headerCells)) {
+    issues.push({
+      level: "error",
+      code: "header-required",
+      message:
+        "The first line must be the header (it names orderName); copy the row again with F11.",
+      line: 1,
+    });
+    return { shipments: [], rows: 0, issues };
+  }
+  const header = readHeader(headerCells);
+  const missing = new Set<RowField>(REQUIRED_FIELDS.filter((field) => !header.has(field)));
+  const dataLines = lines.slice(1);
+  if (dataLines.length === 0) {
+    issues.push({
+      level: "error",
+      code: "empty-paste",
+      message: "The paste has a header but no row.",
+    });
+    return { shipments: [], rows: 0, issues };
+  }
+
+  const shipments: Shipment[] = [];
+  dataLines.forEach((cells, index) => {
+    const line = index + 2;
+    if (cells.length > headerCells.length) {
+      issues.push({
+        level: "error",
+        code: "cell-count",
+        message: `Line ${line} has ${cells.length} cells, the header has ${headerCells.length}.`,
+        line,
+      });
+      return;
+    }
+    const shipment = parseLine({ line, row: toRecord(header, cells), missing, issues });
+    if (shipment !== undefined) {
+      shipments.push(shipment);
+    }
+  });
+  return { shipments, rows: dataLines.length, issues };
 }

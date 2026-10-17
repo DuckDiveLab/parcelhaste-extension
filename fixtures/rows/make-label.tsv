@@ -1,0 +1,4 @@
+orderName	destination.name	destination.company	destination.address1	destination.address2	destination.zip	destination.city	destination.province	destination.countryCode	destination.phone	destination.email	deliveryMethod.additionalInformation.instructions	weight.kg	quantity	contents	harmonizedSystemCode	countryCodeOfOrigin	declaredValue	currencyCode	taxReference
+171-1000003-1000003	Test Person		Teststraße 1		10115	Berlin		DE	+44 7700 900123	test@example.com	Leave it at the door	0.012	1	Washer nozzle x1	870899	CN	14.90	EUR	
+171-1000004-1000004	Second Tester	Example Ltd	2 Sample Road	Flat 3	SW1A 1AA	London		GB	+44 7700 900456	second@example.com		0.214	3	Washer nozzle x2, Fuel cap x1	870899	CN	27.30	EUR	IM1234567890
+171-1000005-1000005	Third Tester		3 Sample Avenue		20500	Washington	DC	US	+1 202 555 0143	third@example.com		1.250	1	Fuel cap x1	870899	CN	19.90	USD	

@@ -16,8 +16,22 @@ export interface RowViewModel {
 }
 
 export function rowViewModel(result: RowParseResult): RowViewModel {
-  const { shipment, issues } = result;
-  if (shipment === undefined) {
+  const { shipments, rows, issues } = result;
+  if (rows > 1) {
+    return {
+      canCreate: false,
+      issues: [
+        {
+          level: "error",
+          code: "one-row-per-paste",
+          message: `one row per paste: ${rows} rows were pasted.`,
+        },
+        ...issues,
+      ],
+    };
+  }
+  const shipment = shipments[0];
+  if (rows !== 1 || shipment === undefined) {
     return { canCreate: false, issues };
   }
   return {

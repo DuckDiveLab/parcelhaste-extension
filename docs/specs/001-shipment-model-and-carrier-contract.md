@@ -24,14 +24,17 @@ and the shared contract test suite. Out: parsing rows (002), running the queue (
 ## Model
 
 - `Shipment`: `orderId`, `recipient: Address`, `parcel: Parcel`, `items: Item[]` (at least one),
+  optional `deliveryInstructions`,
   optional `shippingPrice: Money`, optional `customs: CustomsInfo`, optional `sourceRows`.
-- `Address`: `name`, `line1`, optional `line2`, `line3`, `city`, optional `state`, optional
+- `Address`: `name`, optional `company`, `line1`, optional `line2`, `line3`, `city`, optional `state`, optional
   `postalCode`, `countryCode` (ISO 3166-1 alpha-2), optional `phone`, optional `email`.
 - `Parcel`: `weightGrams` (positive integer), optional dimensions in centimetres.
-- `Item`: `sku`, `description`, `quantity` (positive integer), `unitPrice: Money`, optional
+- `Item`: optional `sku`, `description`, `quantity` (positive integer), optional `unitPrice: Money`
+  (the row input carries a total declared value, not unit prices), optional
   `unitWeightGrams`, `hsCode` (6 to 10 digits), `originCountryCode`.
 - `Money`: `amount` in major units with at most two decimals, `currency` (ISO 4217).
-- `CustomsInfo`: `category` (sale_of_goods, gift, commercial_sample, documents, returned_goods,
+- `CustomsInfo`: optional `declaredValue: Money` (the whole parcel, delivery included, as the
+  row input gives it), optional `taxReference` (IOSS or similar), `category` (sale_of_goods, gift, commercial_sample, documents, returned_goods,
   other), `currency`, optional `explanation`, optional `invoiceNumber`. Declaration lines derive
   from `items`.
 - `requiresCustomsDeclaration(shipment)`: true when `recipient.countryCode` is not an EU member.

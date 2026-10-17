@@ -1,7 +1,7 @@
 // Side panel entry point. Plain DOM, no framework (ADR-0002). Thin glue: parsing lives in
 // src/inputs; submitting to the carrier and the queue arrive with specs 003 and 004.
 import { carriers } from "../../src/carriers/index.ts";
-import { parseExportRows } from "../../src/inputs/row.ts";
+import { parseRows } from "../../src/inputs/row.ts";
 import { type RowViewModel, rowViewModel } from "../../src/inputs/row-view.ts";
 
 function element<K extends keyof HTMLElementTagNameMap>(
@@ -51,13 +51,7 @@ function mount(root: HTMLElement): void {
   }
   const rowInput = element("textarea", {
     id: "row",
-    placeholder: "Paste one order's row (or rows) from the shipping export",
-  });
-  const weightInput = element("input", {
-    id: "weight",
-    type: "text",
-    inputMode: "decimal",
-    placeholder: "Weight: grams, or kilograms below 50",
+    placeholder: "Paste the row copied with F11 at the Make label step",
   });
   const create = element("button", { type: "button", textContent: "Create label", disabled: true });
   const result = element("div", { id: "result" });
@@ -66,13 +60,10 @@ function mount(root: HTMLElement): void {
   const update = (): void => {
     const text = rowInput.value;
     const view: RowViewModel =
-      text.trim() === ""
-        ? { canCreate: false, issues: [] }
-        : rowViewModel(parseExportRows(text, { weight: weightInput.value }));
+      text.trim() === "" ? { canCreate: false, issues: [] } : rowViewModel(parseRows(text));
     renderResult(result, create, view);
   };
   rowInput.addEventListener("input", update);
-  weightInput.addEventListener("input", update);
   create.addEventListener("click", () => {
     status.textContent = "Submitting to the carrier arrives with specs 003 and 004.";
   });
@@ -83,8 +74,6 @@ function mount(root: HTMLElement): void {
     carrierSelect,
     element("label", { htmlFor: "row", textContent: "Row" }),
     rowInput,
-    element("label", { htmlFor: "weight", textContent: "Weight" }),
-    weightInput,
     result,
     create,
     status,
