@@ -11,13 +11,13 @@ one. `harness-check` links criteria to tests for approved and implemented specs.
 |---|---|---|
 | [001](001-shipment-model-and-carrier-contract.md) | Shipment model and carrier adapter contract | draft |
 | [002](002-row-input-from-clipboard.md) | Row input from clipboard | implemented |
+| [004](004-queue-runner-and-error-handling.md) | Queue runner and error handling | draft |
 
 ## Roadmap
 
 | Spec | Title | Notes |
 |---|---|---|
 | 003 | Cyprus Post adapter, `dom` strategy | Blocked on sanitized portal fixtures from the maintainer (`src/carriers/cyprus-post/README.md`). Adds Playwright, CI-only. |
-| 004 | Queue runner and error handling | Runs in the side panel (ADR-0003). Retry policy, pause, resume, exceptions. |
 | 005 | Label download and merged PDF | `ParcelHaste/<carrier-id>/<YYYY-MM-DD>/<order-id>_<tracking>.pdf`; merged PDF needs ADR-0008. |
 | 006 | SKU profiles and customs declarations | Stored weight, HS code, customs description, origin; auto-fill CN22/CN23. |
 | 007 | Amazon shipping-confirmation export | Open question: needs `order-item-id`, which the current export does not contain. |
