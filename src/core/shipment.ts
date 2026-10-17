@@ -23,6 +23,7 @@ export const MoneySchema = z.object({
 
 export const AddressSchema = z.object({
   name: z.string().trim().min(1),
+  company: z.string().trim().optional(),
   line1: z.string().trim().min(1),
   line2: z.string().trim().optional(),
   line3: z.string().trim().optional(),
@@ -37,11 +38,13 @@ export const AddressSchema = z.object({
 });
 
 export const ItemSchema = z.object({
-  sku: z.string().trim().min(1),
+  /** Optional: the row input identifies items by description only. */
+  sku: z.string().trim().min(1).optional(),
   /** Customs description when declared; falls back to the product name. */
   description: z.string().trim().min(1),
   quantity: z.number().int().positive(),
-  unitPrice: MoneySchema,
+  /** Optional: the row input carries one declared value for the parcel instead. */
+  unitPrice: MoneySchema.optional(),
   unitWeightGrams: z.number().int().nonnegative().optional(),
   /** Harmonized System code, 6 to 10 digits. */
   hsCode: z
@@ -72,6 +75,10 @@ export const CustomsCategorySchema = z.enum([
 export const CustomsInfoSchema = z.object({
   category: CustomsCategorySchema,
   currency: CurrencyCodeSchema,
+  /** Value of the whole parcel, delivery included, as the order tool declares it (verify). */
+  declaredValue: MoneySchema.optional(),
+  /** IOSS or similar tax reference of the order. */
+  taxReference: z.string().trim().optional(),
   /** Required by the forms when category is "other". */
   explanation: z.string().trim().optional(),
   invoiceNumber: z.string().trim().optional(),
@@ -86,6 +93,7 @@ export const ShipmentSchema = z.object({
   shippingPrice: MoneySchema.optional(),
   /** Required for destinations outside the EU customs territory. */
   customs: CustomsInfoSchema.optional(),
+  deliveryInstructions: z.string().trim().optional(),
   /** Provenance: which input rows produced this shipment (1-based). */
   sourceRows: z.array(z.number().int().positive()).optional(),
 });

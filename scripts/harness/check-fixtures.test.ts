@@ -36,3 +36,10 @@ test("does not mistake price columns in a TSV row for phone numbers", () => {
   const root = makeRepo({ "fixtures/rows/a.tsv": "1\tEUR\t12.50\t4.90\t0.00\t+44 7700 900123\n" });
   assert.deepEqual(checkFixtures(root), []);
 });
+
+test("does not mistake an IOSS number or a tracking number for a phone", () => {
+  const root = makeRepo({
+    "fixtures/rows/a.tsv": "IM1234567890\tRR123456789CY\t+44 7700 900123\n",
+  });
+  assert.deepEqual(checkFixtures(root), []);
+});

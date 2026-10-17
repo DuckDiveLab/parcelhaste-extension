@@ -6,12 +6,14 @@ maintainer has not confirmed yet.
 ## Shipping
 
 - Shipment → one parcel to one recipient, built from one or more input rows that share an order id; `Shipment` in `src/core/shipment.ts`.
-- Item → one product line in a shipment: SKU, description, quantity, unit price, optional weight, HS code and origin.
-- Parcel → the physical package: weight in grams and optional dimensions in centimetres. A typed weight below 50 is read as kilograms (verify).
+- Item → one product line in a shipment: description and quantity, optional SKU, unit price, weight, HS code and origin.
+- Parcel → the physical package: weight in grams (the row gives kilograms with three decimals) and optional dimensions in centimetres.
 - Order id → the source system's identifier of the order; rows with `Multiple=TRUE` share one order id (verify: always consecutive rows).
 - Recipient → the delivery address and contact: name, address lines, city, state, postal code, country code, phone, email.
 - Sender → the shop shipping from Cyprus (EU); configured once in the extension, not per row (verify).
-- Row → one tab-separated line copied from the Cyprus Post shipping export (22 columns, spec 002); `fixtures/rows/` has examples.
+- Row → one tab-separated line under a header line, copied with F11 from the order tool's "Make label" step (spec 002); `fixtures/rows/` has examples.
+- Declared value → the customs value of the whole parcel, delivery price included, as the row gives it (verify against CN22/CN23 rules).
+- Tax reference → the order's IOSS or similar number, carried on the customs info.
 - Batch → the shipments loaded together; today one pasted row, later a dropped file (roadmap spec 008).
 - Run → one execution of a batch against one carrier; `Run` in `src/core/queue.ts`.
 - Queue → the ordered jobs of a run, executed one at a time in the side panel (ADR-0003).
@@ -47,7 +49,7 @@ maintainer has not confirmed yet.
 - Output → anything that leaves it: label files, the merged PDF, the tracking export (`src/outputs/`).
 - Tracking export → the file uploaded to the marketplace for shipping confirmation (roadmap spec 007; needs an order-item id the export lacks).
 - Validation report → the issues a parser returns next to a shipment: errors block Create, warnings inform (`RowIssue` in `src/inputs/row.ts`).
-- Column map → the export's header list in `src/inputs/column-map.ts`, the only place that knows which cell is which.
+- Column map → the header field list in `src/inputs/column-map.ts`; values are read by header name, never by position.
 - Fixture → synthetic test data under `fixtures/`; never real.
 - Spec → `docs/specs/NNN-slug.md` with EARS acceptance criteria `AC-NNN-n`.
 - ADR → a decision record in `docs/adr/`.
