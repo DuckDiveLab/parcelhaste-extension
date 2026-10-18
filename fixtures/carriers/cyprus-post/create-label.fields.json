@@ -1,0 +1,1532 @@
+{
+  "url": "https://epost.cypruspost.gov.cy/one-time-customer",
+  "title": "One Time Customer - EPOST",
+  "headings": [
+    "Item Shipment created successfully",
+    "Create Item Shipment",
+    "Note:",
+    "For more information regarding the regulations for preparing an Item Shipment, go to https://www.cypruspost.post/el/shipping-tool",
+    "Item Details",
+    "Nature of Item",
+    "Accompanying Documents",
+    "Destination Country",
+    "Gross Weight (Kg)",
+    "Available Service you intend to use",
+    "Related Service",
+    "Options",
+    "Content Pieces",
+    "Content Pieces",
+    "Sender",
+    "Sender Personal Information",
+    "Organisation Information",
+    "Address Info",
+    "Addressee",
+    "Addressee Personal Information",
+    "Organisation Information",
+    "Address Info",
+    "Confirmation",
+    "Cost Summary",
+    "Available Service you intend to use:",
+    "Home",
+    "Item Shipment",
+    "Philately",
+    "P.O. Boxes",
+    "Mail Redirection",
+    "Franking Machines",
+    "Parcel24"
+  ],
+  "forms": [
+    {
+      "index": 0,
+      "id": "CreateCustomsDeclaration",
+      "action": "/OneTimeCustomer/CreateCustomsDeclaration",
+      "method": "post",
+      "fields": [
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "NC_ITEM_ID",
+          "id": "NC_ITEM_ID",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valNumber": "The field NC_ITEM_ID must be a number.",
+            "valRequired": "The NC_ITEM_ID field is required."
+          }
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "AC_REFERENCE_NUMBER",
+          "id": "AC_REFERENCE_NUMBER",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "ITEM_TYPE",
+          "id": "ITEM_TYPE",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valRequired": "The ITEM_TYPE field is required."
+          }
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "UI_ITEM_GUID",
+          "id": "UI_ITEM_GUID",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "BL_BULK_ITEM",
+          "id": "BL_BULK_ITEM",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valRequired": "The BL_BULK_ITEM field is required."
+          }
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "AC_ITEM_STATUS_ID",
+          "id": "AC_ITEM_STATUS_ID",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "hiddenBarcodeExists",
+          "id": "hiddenBarcodeExists",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "hiddenBarcodeWarning",
+          "id": "hiddenBarcodeWarning",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "hiddenFailed",
+          "id": "hiddenFailed",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "hiddenCheckBarcode",
+          "id": "hiddenCheckBarcode",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "hiddenWeightValidationError",
+          "id": "hiddenWeightValidationError",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "hiddenWeightValidationContent",
+          "id": "hiddenWeightValidationContent",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "hiddenServiceByCountryID",
+          "id": "hiddenServiceByCountryID",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "hiddenPostalCodesFormat",
+          "id": "hiddenPostalCodesFormat",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "hiddenGetCategoryURL",
+          "id": "hiddenGetCategoryURL",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "hiddenBarcodeResetTitle",
+          "id": "hiddenBarcodeResetTitle",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "hiddenBarcodeReset",
+          "id": "hiddenBarcodeReset",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "hiddenResetDestination",
+          "id": "hiddenResetDestination",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "hiddenResetDestinationTitle",
+          "id": "hiddenResetDestinationTitle",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "NC_ITEM_ID",
+          "id": "NC_ITEM_ID",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "AC_ITEM_STATUS_ID",
+          "id": "AC_ITEM_STATUS_ID",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "BL_BULK_ITEM",
+          "id": "BL_BULK_ITEM",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "isClient",
+          "id": "isClient",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "AC_NATURE_OF_TRANSACTION_ID",
+          "id": "AC_NATURE_OF_TRANSACTION_ID",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valRequired": "The Nature of Item field is required."
+          }
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "NatureTrnsctRadioGroup",
+          "visible": true,
+          "radioValue": "NSALE",
+          "data": {
+            "role": "radiobutton"
+          },
+          "label": "Sale of Goods"
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "NatureTrnsctRadioGroup",
+          "visible": true,
+          "radioValue": "NRTRN",
+          "data": {
+            "role": "radiobutton"
+          },
+          "label": "Returned goods"
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "NatureTrnsctRadioGroup",
+          "visible": true,
+          "radioValue": "NGIFT",
+          "data": {
+            "role": "radiobutton"
+          },
+          "label": "Gift"
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "NatureTrnsctRadioGroup",
+          "visible": true,
+          "radioValue": "NCOMM",
+          "data": {
+            "role": "radiobutton"
+          },
+          "label": "Commercial Sample"
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "NatureTrnsctRadioGroup",
+          "visible": true,
+          "radioValue": "NDOCS",
+          "data": {
+            "role": "radiobutton"
+          },
+          "label": "Documents"
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "NatureTrnsctRadioGroup",
+          "visible": true,
+          "radioValue": "NOTHR",
+          "data": {
+            "role": "radiobutton"
+          },
+          "label": "Other"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_NATURE_OTHER",
+          "id": "AC_NATURE_OTHER",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "Explanation must not be more than 50 characters",
+            "valLengthMax": "50",
+            "valRegex": "Invalid Characters. No spaces and only Latin alphanumeric characters are allowed in Explanation field.",
+            "valRegexPattern": "^[a-zA-Z0-9. -_?,/'+@!()~{}|]*$",
+            "role": "textbox"
+          },
+          "label": "Explanation"
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "DocsChbxGroup",
+          "visible": true,
+          "radioValue": "DCRT",
+          "data": {
+            "role": "checkbox"
+          },
+          "label": "Certificate"
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "DocsChbxGroup",
+          "visible": true,
+          "radioValue": "DINV",
+          "data": {
+            "role": "checkbox"
+          },
+          "label": "Invoice"
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "DocsChbxGroup",
+          "visible": true,
+          "radioValue": "LABL",
+          "data": {
+            "role": "checkbox"
+          },
+          "label": "Label"
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "DocsChbxGroup",
+          "visible": true,
+          "radioValue": "DLIC",
+          "data": {
+            "role": "checkbox"
+          },
+          "label": "License"
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "ITEM_ASSOCIATED_DOCUMENTS_LIST",
+          "id": "ITEM_ASSOCIATED_DOCUMENTS_LIST",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "DestinationCountry",
+          "id": "DestinationCountry",
+          "visible": false,
+          "data": {
+            "valuePrimitive": "true",
+            "role": "dropdownlist"
+          }
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "visible": true,
+          "data": {
+            "validate": "false"
+          }
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "NC_MEASURED_GROSS_WEIGHT",
+          "id": "NC_MEASURED_GROSS_WEIGHT",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valNumber": "The field Gross Weight (Kg) must be a number.",
+            "valRegex": "Maximum allowed weight is 30.000",
+            "valRegexPattern": "((30){1}([\\.\\,]{1}(0){0,3}){0,1})|([0-2]{0,1}[0-9]{0,1}([\\.\\,]{1}[0-9]{0,3}){0,1})$",
+            "valRequired": "The Gross Weight (Kg) field is required.",
+            "role": "numerictextbox"
+          },
+          "label": "Gross Weight (Kg)"
+        },
+        {
+          "tag": "button",
+          "type": "button",
+          "visible": false
+        },
+        {
+          "tag": "button",
+          "type": "button",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "NC_ITEM_CATEGORY_ID",
+          "id": "NC_ITEM_CATEGORY_ID",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valNumber": "The field Available Service you intend to use must be a number."
+          }
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "CategoryRadioGroup",
+          "visible": true,
+          "radioValue": "23",
+          "data": {
+            "role": "radiobutton"
+          },
+          "label": "EMS Datapost The service is ideal for sending documents, correspondence, merchandise and commercial samples rapidly and safely at attractive prices. They are sent in special dispatches to more than 128 countries. Postages include compensation up to € 150.More information:https://www.cypruspost.post/en/ems-datapost-genika"
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "CategoryRadioGroup",
+          "visible": true,
+          "radioValue": "1060150",
+          "data": {
+            "role": "radiobutton"
+          },
+          "label": "Letter The most cost efficient way to send items up to 2 kg."
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "CategoryRadioGroup",
+          "visible": true,
+          "radioValue": "21",
+          "data": {
+            "role": "radiobutton"
+          },
+          "label": "Parcel The Parcel service enables the exchange of parcels to and from all countries of the world in which there is postal connection. At a low cost, a business or an individual can send merchandise or personal effects worldwide.More information:https://www.cypruspost.post/el/demata-genika"
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "CategoryRadioGroup",
+          "visible": true,
+          "radioValue": "24",
+          "data": {
+            "role": "radiobutton"
+          },
+          "label": "A' Priority Parcels-Interconnect Premium The Interconnect Premium service applies only for A-priority parcels to specific participating countries. It offers agreed competitive standards including tracked plus signature upon delivery.More information:https://www.cypruspost.post/en/demata-genika"
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "LetterRadioGroup",
+          "visible": false,
+          "radioValue": "1",
+          "data": {
+            "role": "radiobutton"
+          },
+          "label": "Small (P) 50g Αντικείμενα με τις διαστάσεις του μεγέθους Ρ με μέγιστο βάρος 50 γρ. {Παραπομπή https://www.cypruspost.post/el/epistoliko-taxidromeio-prodiagrafes}"
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "LetterRadioGroup",
+          "visible": false,
+          "radioValue": "2",
+          "data": {
+            "role": "radiobutton"
+          },
+          "label": "Large (G) 500g Αντικείμενα με τις διαστάσεις του μεγέθους G με μέγιστο βάρος 500 γρ. {Παραπομπή https://www.cypruspost.post/el/epistoliko-taxidromeio-prodiagrafes}"
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "LetterRadioGroup",
+          "visible": false,
+          "radioValue": "3",
+          "data": {
+            "role": "radiobutton"
+          },
+          "label": "Irregular (E) 2kg Αντικείμενα με τις διαστάσεις του μεγέθους E με μέγιστο βάρος 2 κιλά. {Παραπομπή https://www.cypruspost.post/el/epistoliko-taxidromeio-prodiagrafes}"
+        },
+        {
+          "tag": "button",
+          "type": "button",
+          "id": "ItemNextButton",
+          "visible": true,
+          "data": {
+            "role": "button",
+            "wizardNext": ""
+          }
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "HiddenCheckItemOption",
+          "id": "HiddenCheckItemOption",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "HiddenGetItemOptionsSnapshot",
+          "id": "HiddenGetItemOptionsSnapshot",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "HiddenInsuredValue",
+          "id": "HiddenInsuredValue",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "HiddenCODValue",
+          "id": "HiddenCODValue",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "HiddenDeclaredActualValueMessage",
+          "id": "HiddenDeclaredActualValueMessage",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "HiddenDeclareValueMinMaxMessage",
+          "id": "HiddenDeclareValueMinMaxMessage",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "HiddenRegisteredTooltip",
+          "id": "HiddenRegisteredTooltip",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "HiddenAdviceOfDeliveryTooltip",
+          "id": "HiddenAdviceOfDeliveryTooltip",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "HiddenRecordedDeliveryTooltip",
+          "id": "HiddenRecordedDeliveryTooltip",
+          "visible": false
+        },
+        {
+          "tag": "button",
+          "type": "button",
+          "id": "OptionsPreviousButton",
+          "visible": false,
+          "data": {
+            "role": "button",
+            "wizardPrevious": ""
+          }
+        },
+        {
+          "tag": "button",
+          "type": "button",
+          "id": "OptionsNextButton",
+          "visible": false,
+          "data": {
+            "role": "button",
+            "wizardNext": ""
+          }
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "hiddenErrorWeight",
+          "id": "hiddenErrorWeight",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "hiddenErrorWeightOneTime",
+          "id": "hiddenErrorWeightOneTime",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "hiddenErrorContentPiecesMax",
+          "id": "hiddenErrorContentPiecesMax",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "hiddenError",
+          "id": "hiddenError",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "hiddenHSError",
+          "id": "hiddenHSError",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "hiddenInvalidCharError",
+          "id": "hiddenInvalidCharError",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "hiddenMaxDescError",
+          "id": "hiddenMaxDescError",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "hiddenGetContentPieceDetails",
+          "id": "hiddenGetContentPieceDetails",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "hiddenCreateContentPiece",
+          "id": "hiddenCreateContentPiece",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "hiddenContentPieceEnteredSucc",
+          "id": "hiddenContentPieceEnteredSucc",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "hiddenFindHS",
+          "id": "hiddenFindHS",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "FailedHS",
+          "id": "FailedHS",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "hiddenErroNatureofGoods",
+          "id": "hiddenErroNatureofGoods",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "HiddenSelectContentPieceFromCatalogTooltip",
+          "id": "HiddenSelectContentPieceFromCatalogTooltip",
+          "visible": false
+        },
+        {
+          "tag": "textarea",
+          "type": "textarea",
+          "name": "txtDescr",
+          "id": "txtDescr",
+          "visible": false,
+          "data": {
+            "role": "textarea"
+          }
+        },
+        {
+          "tag": "button",
+          "type": "button",
+          "id": "SearchHSCode",
+          "visible": false,
+          "data": {
+            "role": "button"
+          }
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AutoCompleteTariffHeading",
+          "id": "AutoCompleteTariffHeading",
+          "visible": false,
+          "data": {
+            "role": "textbox"
+          }
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "ddlCountry",
+          "id": "ddlCountry",
+          "visible": false,
+          "data": {
+            "valuePrimitive": "true",
+            "role": "dropdownlist"
+          }
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "visible": false,
+          "data": {
+            "validate": "false"
+          }
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "txtNumberOfUnits",
+          "id": "txtNumberOfUnits",
+          "visible": false,
+          "data": {
+            "role": "numerictextbox"
+          }
+        },
+        {
+          "tag": "button",
+          "type": "button",
+          "visible": false
+        },
+        {
+          "tag": "button",
+          "type": "button",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "visible": false,
+          "data": {
+            "validate": "false"
+          }
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "txtDeclaredValueAmount",
+          "id": "txtDeclaredValueAmount",
+          "visible": false,
+          "data": {
+            "role": "numerictextbox"
+          }
+        },
+        {
+          "tag": "button",
+          "type": "button",
+          "visible": false
+        },
+        {
+          "tag": "button",
+          "type": "button",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "visible": false,
+          "data": {
+            "validate": "false"
+          }
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "txtNetWeight",
+          "id": "txtNetWeight",
+          "visible": false,
+          "data": {
+            "role": "numerictextbox"
+          }
+        },
+        {
+          "tag": "button",
+          "type": "button",
+          "visible": false
+        },
+        {
+          "tag": "button",
+          "type": "button",
+          "visible": false
+        },
+        {
+          "tag": "button",
+          "type": "button",
+          "id": "AddContentItem",
+          "visible": false,
+          "data": {
+            "role": "button"
+          }
+        },
+        {
+          "tag": "select",
+          "type": "select-one",
+          "visible": false,
+          "data": {
+            "role": "dropdownlist"
+          },
+          "options": [
+            {
+              "value": "all",
+              "text": "All"
+            }
+          ]
+        },
+        {
+          "tag": "button",
+          "type": "button",
+          "id": "ContentPiecesPreviousButton",
+          "visible": false,
+          "data": {
+            "role": "button",
+            "wizardPrevious": ""
+          }
+        },
+        {
+          "tag": "button",
+          "type": "button",
+          "id": "ContentPiecesNextButton",
+          "visible": false,
+          "data": {
+            "role": "button",
+            "wizardNext": ""
+          }
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_SENDER_FIRST_NAME",
+          "id": "AC_SENDER_FIRST_NAME",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "Sender First Name must not be more than 50 characters",
+            "valLengthMax": "50",
+            "valRequiredif": "Sender First Name is required",
+            "valRequiredifOtherpropertyname": "BL_BULK_ITEM",
+            "valRequiredifOtherpropertyvalue": "false",
+            "role": "textbox"
+          },
+          "label": "Sender First Name"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_SENDER_LAST_NAME",
+          "id": "AC_SENDER_LAST_NAME",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "Sender Last Name must not be more than 50 characters",
+            "valLengthMax": "50",
+            "valRequiredif": "Sender Last Name is required",
+            "valRequiredifOtherpropertyname": "BL_BULK_ITEM",
+            "valRequiredifOtherpropertyvalue": "false",
+            "role": "textbox"
+          },
+          "label": "Sender Last Name"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_SENDER_IDENTIFICATION_REFERENCE",
+          "id": "AC_SENDER_IDENTIFICATION_REFERENCE",
+          "visible": false,
+          "data": {
+            "role": "textbox"
+          },
+          "label": "Identification Reference (tax code/ VAT no/ code)"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_SENDER_EMAIL1",
+          "id": "AC_SENDER_EMAIL1",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "Sender Email must not be more than 512 characters",
+            "valLengthMax": "512",
+            "valRegex": "Invalid Email Address",
+            "valRegexPattern": "^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\\.[a-zA-Z](-?[a-zA-Z0-9])*)+$",
+            "role": "textbox"
+          },
+          "label": "Sender Email"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_SENDER_TELEPHONE1",
+          "id": "AC_SENDER_TELEPHONE1",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "Sender Telephone must not be more than 26 characters",
+            "valLengthMax": "26",
+            "valRequiredif": "Sender Telephone is required",
+            "valRequiredifOtherpropertyname": "BL_BULK_ITEM",
+            "valRequiredifOtherpropertyvalue": "false",
+            "intlTelInputId": "0"
+          },
+          "label": "Sender Telephone"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_SENDER_FAX1",
+          "id": "AC_SENDER_FAX1",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "Sender Fax must not be more than 26 characters",
+            "valLengthMax": "26",
+            "intlTelInputId": "2"
+          },
+          "label": "Sender Fax"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_SENDER_ADDITIONAL_DATA1",
+          "id": "AC_SENDER_ADDITIONAL_DATA1",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "Sender Company Name must not be more than 50 characters",
+            "valLengthMax": "50",
+            "role": "textbox"
+          },
+          "label": "Sender Company Name"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_SENDER_LOCALITY_CODE_input",
+          "placeholder": "-Select-",
+          "visible": false
+        },
+        {
+          "tag": "button",
+          "type": "button",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_SENDER_LOCALITY_CODE",
+          "id": "AC_SENDER_LOCALITY_CODE",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "Send. Postal Code must not be more than 17 characters",
+            "valLengthMax": "17",
+            "valRegex": "Invalid Characters. No spaces and only Latin alphanumeric characters are allowed in Send. Postal Code field.",
+            "valRegexPattern": "^[a-zA-Z0-9]*$",
+            "valRequiredif": "Sender Postal Code is required",
+            "valRequiredifOtherpropertyname": "BL_BULK_ITEM",
+            "valRequiredifOtherpropertyvalue": "false",
+            "valuePrimitive": "true",
+            "role": "combobox"
+          },
+          "label": "Send. Postal Code"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_SENDER_LOCALITY_NAME",
+          "id": "AC_SENDER_LOCALITY_NAME",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "Sender Town/City must not be more than 50 characters",
+            "valLengthMax": "50",
+            "valRequiredif": "Sender Town/City is required",
+            "valRequiredifOtherpropertyname": "BL_BULK_ITEM",
+            "valRequiredifOtherpropertyvalue": "false",
+            "role": "textbox"
+          },
+          "label": "Sender Town/City"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_SENDER_LOCALITY_REGION",
+          "id": "AC_SENDER_LOCALITY_REGION",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "Sender State/District must not be more than 32 characters",
+            "valLengthMax": "32",
+            "valRequiredif": "Sender State/District is required",
+            "valRequiredifOtherpropertyname": "BL_BULK_ITEM",
+            "valRequiredifOtherpropertyvalue": "false",
+            "role": "textbox"
+          },
+          "label": "Sender State/District"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "NC_SENDER_COUNTRY_ID",
+          "id": "NC_SENDER_COUNTRY_ID",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valNumber": "The field Sender Country must be a number.",
+            "valRequired": "The Sender Country field is required.",
+            "valRequiredif": "Sender Country is required",
+            "valRequiredifOtherpropertyname": "BL_BULK_ITEM",
+            "valRequiredifOtherpropertyvalue": "false",
+            "valuePrimitive": "true",
+            "role": "dropdownlist"
+          },
+          "label": "Sender Country"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_SENDER_POSTAL_ADDRESS_PREMISES1_input",
+          "visible": false
+        },
+        {
+          "tag": "button",
+          "type": "button",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_SENDER_POSTAL_ADDRESS_PREMISES1",
+          "id": "AC_SENDER_POSTAL_ADDRESS_PREMISES1",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "Sender Street Name/P.O.Box must not be more than 50 characters",
+            "valLengthMax": "50",
+            "valRequiredif": "Sender Street Name/P.O.Box is required",
+            "valRequiredifOtherpropertyname": "BL_BULK_ITEM",
+            "valRequiredifOtherpropertyvalue": "false",
+            "role": "combobox"
+          },
+          "label": "Sender Street Name/P.O.Box"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_SENDER_POSTAL_ADDRESS_PREMISES2",
+          "id": "AC_SENDER_POSTAL_ADDRESS_PREMISES2",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "No must not be more than 10 characters",
+            "valLengthMax": "10",
+            "role": "textbox"
+          },
+          "label": "No"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_SENDER_POSTAL_ADDRESS_PREMISES3",
+          "id": "AC_SENDER_POSTAL_ADDRESS_PREMISES3",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "Flat/Off. must not be more than 10 characters",
+            "valLengthMax": "10",
+            "role": "textbox"
+          },
+          "label": "Flat/Off."
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_SENDER_POSTAL_ADDRESS_PREMISES4",
+          "id": "AC_SENDER_POSTAL_ADDRESS_PREMISES4",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "Building must not be more than 50 characters",
+            "valLengthMax": "50",
+            "role": "textbox"
+          },
+          "label": "Building"
+        },
+        {
+          "tag": "button",
+          "type": "button",
+          "id": "SenderPreviousButton",
+          "visible": false,
+          "data": {
+            "role": "button",
+            "wizardPrevious": ""
+          }
+        },
+        {
+          "tag": "button",
+          "type": "button",
+          "id": "SenderNextButton",
+          "visible": false,
+          "data": {
+            "role": "button",
+            "wizardNext": ""
+          }
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_ADDRESSEE_FIRST_NAME",
+          "id": "AC_ADDRESSEE_FIRST_NAME",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "Addressee First Name must not be more than 50 characters",
+            "valLengthMax": "50",
+            "valRequiredif": "The Addressee Name is required.",
+            "valRequiredifOtherpropertyname": "BL_BULK_ITEM",
+            "valRequiredifOtherpropertyvalue": "false",
+            "role": "textbox"
+          },
+          "label": "Addressee First Name"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_ADDRESSEE_LAST_NAME",
+          "id": "AC_ADDRESSEE_LAST_NAME",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "Addressee Last Name must not be more than 50 characters",
+            "valLengthMax": "50",
+            "valRequiredif": "The Addressee Surname is required.",
+            "valRequiredifOtherpropertyname": "BL_BULK_ITEM",
+            "valRequiredifOtherpropertyvalue": "false",
+            "role": "textbox"
+          },
+          "label": "Addressee Last Name"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_ADDRESSEE_IDENTIFICATION_REFERENCE",
+          "id": "AC_ADDRESSEE_IDENTIFICATION_REFERENCE",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "Identification Reference (tax code/ VAT no/ code) must not be more than 50 characters",
+            "valLengthMax": "50",
+            "role": "textbox"
+          },
+          "label": "Identification Reference (tax code/ VAT no/ code)"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_ADDRESSEE_EMAIL1",
+          "id": "AC_ADDRESSEE_EMAIL1",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "Addressee Email must not be more than 512 characters",
+            "valLengthMax": "512",
+            "valRegex": "Invalid Email Address",
+            "valRegexPattern": "^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\\.[a-zA-Z](-?[a-zA-Z0-9])*)+$",
+            "role": "textbox"
+          },
+          "label": "Addressee Email"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_ADDRESSEE_TELEPHONE1",
+          "id": "AC_ADDRESSEE_TELEPHONE1",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "Telephone must not be more than 26 characters",
+            "valLengthMax": "26",
+            "intlTelInputId": "1"
+          },
+          "label": "Telephone"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_ADDRESSEE_FAX1",
+          "id": "AC_ADDRESSEE_FAX1",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "Fax must not be more than 26 characters",
+            "valLengthMax": "26",
+            "intlTelInputId": "3"
+          },
+          "label": "Fax"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_ADDRESSEE_ADDITIONAL_DATA1",
+          "id": "AC_ADDRESSEE_ADDITIONAL_DATA1",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "Addressee Company Name must not be more than 50 characters",
+            "valLengthMax": "50",
+            "role": "textbox"
+          },
+          "label": "Addressee Company Name"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_ADDRESSEE_LOCALITY_CODE",
+          "id": "AC_ADDRESSEE_LOCALITY_CODE",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "Addr. Postal Code must not be more than 10 characters",
+            "valLengthMax": "10",
+            "valRegex": "Invalid Characters. No spaces and only Latin alphanumeric characters are allowed in Addr. Postal Code field.",
+            "valRegexPattern": "^[a-zA-Z0-9- ]*$",
+            "valRequiredif": "The Addressee Postal Code is required.",
+            "valRequiredifOtherpropertyname": "BL_BULK_ITEM",
+            "valRequiredifOtherpropertyvalue": "false",
+            "role": "textbox"
+          },
+          "label": "Addr. Postal Code"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_ADDRESSEE_LOCALITY_NAME",
+          "id": "AC_ADDRESSEE_LOCALITY_NAME",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "Addressee Town/City must not be more than 32 characters",
+            "valLengthMax": "32",
+            "valRequiredif": "The Addressee Town/City is required.",
+            "valRequiredifOtherpropertyname": "BL_BULK_ITEM",
+            "valRequiredifOtherpropertyvalue": "false",
+            "role": "textbox"
+          },
+          "label": "Addressee Town/City"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_ADDRESSEE_LOCALITY_REGION",
+          "id": "AC_ADDRESSEE_LOCALITY_REGION",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "Addressee State/District must not be more than 50 characters",
+            "valLengthMax": "50",
+            "role": "textbox"
+          },
+          "label": "Addressee State/District"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "NC_ADDRESSEE_COUNTRY_ID",
+          "id": "NC_ADDRESSEE_COUNTRY_ID",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valNumber": "The field Addressee Country must be a number.",
+            "valRequired": "The Addressee Country field is required.",
+            "valRequiredif": "The Addressee Country is required.",
+            "valRequiredifOtherpropertyname": "BL_BULK_ITEM",
+            "valRequiredifOtherpropertyvalue": "false",
+            "valuePrimitive": "true",
+            "role": "dropdownlist"
+          },
+          "label": "Addressee Country"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_ADDRESSEE_POSTAL_ADDRESS_PREMISES1",
+          "id": "AC_ADDRESSEE_POSTAL_ADDRESS_PREMISES1",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "Addressee Street Name must not be more than 50 characters",
+            "valLengthMax": "50",
+            "valRequiredif": "The Addressee Address is required.",
+            "valRequiredifOtherpropertyname": "BL_BULK_ITEM",
+            "valRequiredifOtherpropertyvalue": "false",
+            "role": "textbox"
+          },
+          "label": "Addressee Street Name"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_ADDRESSEE_POSTAL_ADDRESS_PREMISES2",
+          "id": "AC_ADDRESSEE_POSTAL_ADDRESS_PREMISES2",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "No must not be more than 10 characters",
+            "valLengthMax": "10",
+            "role": "textbox"
+          },
+          "label": "No"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_ADDRESSEE_POSTAL_ADDRESS_PREMISES3",
+          "id": "AC_ADDRESSEE_POSTAL_ADDRESS_PREMISES3",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "Flat/Off. must not be more than 10 characters",
+            "valLengthMax": "10",
+            "role": "textbox"
+          },
+          "label": "Flat/Off."
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "AC_ADDRESSEE_POSTAL_ADDRESS_PREMISES4",
+          "id": "AC_ADDRESSEE_POSTAL_ADDRESS_PREMISES4",
+          "visible": false,
+          "data": {
+            "val": "true",
+            "valLength": "Building must not be more than 50 characters",
+            "valLengthMax": "50",
+            "role": "textbox"
+          },
+          "label": "Building"
+        },
+        {
+          "tag": "button",
+          "type": "button",
+          "id": "AddresseePreviousButton",
+          "visible": false,
+          "data": {
+            "role": "button",
+            "wizardPrevious": ""
+          }
+        },
+        {
+          "tag": "button",
+          "type": "button",
+          "id": "AddresseeNextButton",
+          "visible": false,
+          "data": {
+            "role": "button",
+            "wizardNext": ""
+          }
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "DATA_CORRECTNESS",
+          "id": "DATA_CORRECTNESS",
+          "required": true,
+          "visible": false,
+          "radioValue": "true",
+          "data": {
+            "role": "checkbox",
+            "valRequired": "true"
+          },
+          "label": "* I confirm the correctness of the information I have entered in the item shipment."
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "DATA_CORRECTNESS",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "DATA_DANGEROUS_PROHIBITED",
+          "id": "DATA_DANGEROUS_PROHIBITED",
+          "required": true,
+          "visible": false,
+          "radioValue": "true",
+          "data": {
+            "role": "checkbox",
+            "valRequired": "true"
+          },
+          "label": "* I have read the"
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "DATA_DANGEROUS_PROHIBITED",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "TERMS",
+          "id": "TERMS",
+          "required": true,
+          "visible": false,
+          "radioValue": "true",
+          "data": {
+            "role": "checkbox",
+            "valRequired": "true"
+          },
+          "label": "* I have read the Terms and Conditions of the service I will use."
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "TERMS",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "HiddenCheckSummary",
+          "id": "HiddenCheckSummary",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "BL_ADD_ITEM_TO_CART",
+          "id": "BL_ADD_ITEM_TO_CART",
+          "visible": false,
+          "radioValue": "true",
+          "data": {
+            "role": "checkbox"
+          },
+          "label": "Add to cart for payment"
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "BL_ADD_ITEM_TO_CART",
+          "visible": false
+        },
+        {
+          "tag": "button",
+          "type": "button",
+          "id": "SummaryPreviousButton",
+          "visible": false,
+          "data": {
+            "role": "button",
+            "wizardPrevious": ""
+          }
+        },
+        {
+          "tag": "input",
+          "type": "submit",
+          "id": "SaveCustomsDeclaration",
+          "visible": false
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "id": "PostOfficeSession",
+      "action": "/OneTimeCustomer/SendEmail",
+      "method": "post",
+      "fields": [
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "refNumber",
+          "id": "refNumber",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "uiItemGuid",
+          "id": "uiItemGuid",
+          "visible": false
+        },
+        {
+          "tag": "input",
+          "type": "email",
+          "name": "email",
+          "id": "email",
+          "required": true,
+          "visible": false,
+          "data": {
+            "role": "textbox"
+          },
+          "label": "Enter Your Email"
+        },
+        {
+          "tag": "input",
+          "type": "submit",
+          "visible": false
+        }
+      ]
+    }
+  ],
+  "capturedAt": "2026-10-18",
+  "note": "Guest wizard /one-time-customer. All six steps are in form 0; fields of later steps report visible=false. No values captured. Phone and fax placeholders (intl-tel-input example numbers) are omitted."
+}

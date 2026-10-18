@@ -1,0 +1,417 @@
+{
+  "source": "POST /CustomsDeclarationsList/GetServiceByCountryID and GetPostalCodesFormat",
+  "capturedAt": "2026-10-18",
+  "legend": "ems/interconnectPremium/parcel/letter = service allowed; hsCodeEnabled = destination outside the EU customs territory",
+  "destinations": [
+    {
+      "id": 238,
+      "name": "United States of America (the)",
+      "ems": true,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": "NNNNN or NNNNN-NNNN or NNNNNNNNN"
+    },
+    {
+      "id": 236,
+      "name": "United Kingdom (the)",
+      "ems": true,
+      "interconnectPremium": true,
+      "parcel": false,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": "AAN NAA or AANA NAA or AANN N or AANN NAA or AN NAA or ANA NAA or ANN NAA or ANNNNN"
+    },
+    {
+      "id": 41,
+      "name": "Canada",
+      "ems": true,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": null
+    },
+    {
+      "id": 14,
+      "name": "Australia",
+      "ems": true,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": null
+    },
+    {
+      "id": 160,
+      "name": "New Zealand",
+      "ems": true,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": null
+    },
+    {
+      "id": 217,
+      "name": "Switzerland",
+      "ems": true,
+      "interconnectPremium": true,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": "NNNN or NNNNNN"
+    },
+    {
+      "id": 167,
+      "name": "Norway",
+      "ems": true,
+      "interconnectPremium": true,
+      "parcel": false,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": "NNNN"
+    },
+    {
+      "id": 110,
+      "name": "Israel",
+      "ems": true,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": null
+    },
+    {
+      "id": 113,
+      "name": "Japan",
+      "ems": true,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": null
+    },
+    {
+      "id": 235,
+      "name": "United Arab Emirates (the)",
+      "ems": true,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": "AAA or NAN or NNN or NNNN or NNNNN"
+    },
+    {
+      "id": 202,
+      "name": "Singapore",
+      "ems": true,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": null
+    },
+    {
+      "id": 199,
+      "name": "Serbia",
+      "ems": true,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": null
+    },
+    {
+      "id": 234,
+      "name": "Ukraine",
+      "ems": true,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": null
+    },
+    {
+      "id": 185,
+      "name": "Russian Federation (the)",
+      "ems": true,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": null
+    },
+    {
+      "id": 84,
+      "name": "Germany",
+      "ems": true,
+      "interconnectPremium": true,
+      "parcel": false,
+      "letter": true,
+      "hsCodeEnabled": false,
+      "postalCodeFormats": "NNNNN"
+    },
+    {
+      "id": 87,
+      "name": "Greece",
+      "ems": true,
+      "interconnectPremium": true,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": false,
+      "postalCodeFormats": "NNN NN or NNNNN"
+    },
+    {
+      "id": 77,
+      "name": "France",
+      "ems": true,
+      "interconnectPremium": true,
+      "parcel": false,
+      "letter": true,
+      "hsCodeEnabled": false,
+      "postalCodeFormats": "NNNNN"
+    },
+    {
+      "id": 111,
+      "name": "Italy",
+      "ems": true,
+      "interconnectPremium": true,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": false,
+      "postalCodeFormats": "NNNNN"
+    },
+    {
+      "id": 211,
+      "name": "Spain",
+      "ems": true,
+      "interconnectPremium": true,
+      "parcel": false,
+      "letter": true,
+      "hsCodeEnabled": false,
+      "postalCodeFormats": "NNNNN"
+    },
+    {
+      "id": 158,
+      "name": "Netherlands (the)",
+      "ems": true,
+      "interconnectPremium": true,
+      "parcel": false,
+      "letter": true,
+      "hsCodeEnabled": false,
+      "postalCodeFormats": "NNNN AA or NNNNAA"
+    },
+    {
+      "id": 178,
+      "name": "Poland",
+      "ems": true,
+      "interconnectPremium": true,
+      "parcel": false,
+      "letter": true,
+      "hsCodeEnabled": false,
+      "postalCodeFormats": "NN-NNN or NNNNN"
+    },
+    {
+      "id": 108,
+      "name": "Ireland",
+      "ems": true,
+      "interconnectPremium": true,
+      "parcel": false,
+      "letter": true,
+      "hsCodeEnabled": false,
+      "postalCodeFormats": "AAA AAAA or AAA AAAN or AAA AANA or AAA AANN or AAA ANAA or AAA ANAN or AAA ANNA or AAA ANNN or AAA NAAA or AAA NAAN or AAA NANA or AAA NANN or AAA NNAA or AAA NNAN or AAA NNNA or AAA NNNN or AAN AAAA or AAN AAAN or AAN AANA or AAN AANN or AAN ANAA or AAN ANAN or AAN ANNA or AAN ANNN or AAN NAAA or AAN NAAN or AAN NANA or AAN NANN or AAN NNAA or AAN NNAN or AAN NNNA or AAN NNNN or ANA AAAA or ANA AAAN or ANA AANA or ANA AANN or ANA ANAA or ANA ANAN or ANA ANNA or ANA ANNN or ANA NAAA or ANA NAAN or ANA NANA or ANA NANN or ANA NNAA or ANA NNAN or ANA NNNA or ANA NNNN or ANN AAAA or ANN AAAN or ANN AANA or ANN AANN or ANN ANAA or ANN ANAN or ANN ANNA or ANN ANNN or ANN NAAA or ANN NAAN or ANN NANA or ANN NANN or ANN NNAA or ANN NNAN or ANN NNNA or ANN NNNN or NAA AAAA or NAA AAAN or NAA AANA or NAA AANN or NAA ANAA or NAA ANAN or NAA ANNA or NAA ANNN or NAA NAAA or NAA NAAN or NAA NANA or NAA NANN or NAA NNAA or NAA NNAN or NAA NNNA or NAA NNNN or NAN AAAA or NAN AAAN or NAN AANA or NAN AANN or NAN ANAA or NAN ANAN or NAN ANNA or NAN ANNN or NAN NAAA or NAN NAAN or NAN NANA or NAN NANN or NAN NNAA or NAN NNAN or NAN NNNA or NAN NNNN or NNA AAAA or NNA AAAN or NNA AANA or NNA AANN or NNA ANAA or NNA ANAN or NNA ANNA or NNA ANNN or NNA NAAA or NNA NAAN or NNA NANA or NNA NANN or NNA NNAA or NNA NNAN or NNA NNNA or NNA NNNN or NNN AAAA or NNN AAAN or NNN AANA or NNN AANN or NNN ANAA or NNN ANAN or NNN ANNA or NNN ANNN or NNN NAAA or NNN NAAN or NNN NANA or NNN NANN or NNN NNAA or NNN NNAN or NNN NNNA or NNN NNNN"
+    },
+    {
+      "id": 103,
+      "name": "Iceland",
+      "ems": true,
+      "interconnectPremium": true,
+      "parcel": false,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": "NNN"
+    },
+    {
+      "id": 145,
+      "name": "Mexico",
+      "ems": true,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": null
+    },
+    {
+      "id": 32,
+      "name": "Brazil",
+      "ems": true,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": null
+    },
+    {
+      "id": 104,
+      "name": "India",
+      "ems": true,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": null
+    },
+    {
+      "id": 46,
+      "name": "China",
+      "ems": true,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": null
+    },
+    {
+      "id": 120,
+      "name": "Korea (the Republic of)",
+      "ems": true,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": null
+    },
+    {
+      "id": 197,
+      "name": "Saudi Arabia",
+      "ems": true,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": null
+    },
+    {
+      "id": 208,
+      "name": "South Africa",
+      "ems": true,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": null
+    },
+    {
+      "id": 126,
+      "name": "Lebanon",
+      "ems": true,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": null
+    },
+    {
+      "id": 66,
+      "name": "Egypt",
+      "ems": true,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": null
+    },
+    {
+      "id": 83,
+      "name": "Georgia",
+      "ems": true,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": null
+    },
+    {
+      "id": 12,
+      "name": "Armenia",
+      "ems": true,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": null
+    },
+    {
+      "id": 147,
+      "name": "Moldova (the Republic of)",
+      "ems": true,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": null
+    },
+    {
+      "id": 86,
+      "name": "Gibraltar",
+      "ems": true,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": null
+    },
+    {
+      "id": 114,
+      "name": "Jersey",
+      "ems": true,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": null
+    },
+    {
+      "id": 93,
+      "name": "Guernsey",
+      "ems": false,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": null
+    },
+    {
+      "id": 109,
+      "name": "Isle of Man",
+      "ems": false,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": null
+    },
+    {
+      "id": 251,
+      "name": "Canary Islands",
+      "ems": true,
+      "interconnectPremium": false,
+      "parcel": false,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": null
+    },
+    {
+      "id": 101,
+      "name": "Hong Kong",
+      "ems": true,
+      "interconnectPremium": false,
+      "parcel": true,
+      "letter": true,
+      "hsCodeEnabled": true,
+      "postalCodeFormats": null
+    }
+  ]
+}
