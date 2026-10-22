@@ -17,7 +17,7 @@ one. `harness-check` links criteria to tests for approved and implemented specs.
 
 | Spec | Title | Notes |
 |---|---|---|
-| 003 | Cyprus Post adapter, `dom` strategy | Guest-wizard fixtures, rules and mapping gaps are in `src/carriers/cyprus-post/README.md`; the confirmation page, label PDF and submit HAR still need one real submit. Adds Playwright, CI-only. The official API is out of scope: the ParcelHaste server gateway implements it. |
+| 003 | Cyprus Post adapter, `http` strategy | Post the wizard's form body to Create from the portal tab instead of filling the wizard. The request recipe, rules and mapping gaps are in `src/carriers/cyprus-post/README.md`; the submit HAR and label PDF still need one real submit, and the logged-in form needs a CyLogin session. The official API is out of scope: the ParcelHaste server gateway implements it. |
 | 005 | Label download and merged PDF | `ParcelHaste/<carrier-id>/<YYYY-MM-DD>/<order-id>_<tracking>.pdf`; merged PDF needs ADR-0008. |
 | 006 | SKU profiles and customs declarations | Stored weight, HS code, customs description, origin; auto-fill CN22/CN23. |
 | 007 | Amazon shipping-confirmation export | Open question: needs `order-item-id`, which the current export does not contain. |

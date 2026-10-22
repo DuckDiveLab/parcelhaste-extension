@@ -1,30 +1,27 @@
 # Cyprus Post (ePost) adapter
 
-Status: scaffold. Strategy: `dom` on the ePost wizard, then `http`. The official API (see
-"Official API" below) is not used by this extension: it belongs to the separate ParcelHaste server
-gateway, and the extension covers the cases where that API cannot be used. Spec:
-`docs/specs/README.md`, spec 003.
+Status: scaffold. Strategy: `http`: post the wizard's form body to the Create URL from the portal
+tab, without filling the wizard (see "Posting directly" below). The official API (see "Official
+API") is not used by this extension: it belongs to the separate ParcelHaste server gateway, and the
+extension covers the cases where that API cannot be used. Spec: `docs/specs/README.md`, spec 003.
 
 ## Fixtures for spec 003
 
 All fixtures go under `fixtures/carriers/cyprus-post/` and must be sanitized: no real
 names, addresses, phone numbers, emails, account numbers, session cookies or tokens.
-How to capture and sanitize them: `docs/portal-capture.md`.
+How to capture and sanitize them: `docs/portal-capture.md`. Page HTML is not needed for the
+`http` strategy; the requests and responses are.
 
 | File | What it is | Status |
 |---|---|---|
-| `create-label.fields.json` | Form inventory of the guest wizard (all 6 steps are in one form), no values | captured 2026-10-18 |
+| `create-label.fields.json` | Every field of the guest wizard (all 6 steps are one form), no values: the names of the Create body | captured 2026-10-18 |
 | `countries.json` | Destination list: portal country id ↔ name (248 entries) | captured 2026-10-18 |
 | `services-by-country.json` | Allowed services, HS-code flag and postcode formats for 41 destinations | captured 2026-10-18 |
 | `services.md` | Services, sizes, options and the rules between them | written 2026-10-18 |
-| `create-label.empty.html` | The guest wizard after load, step 1 | captured 2026-10-18 |
-| `create-label.filled.html` | The guest wizard at step 6 with a synthetic shipment to GB (Letter E, 0.6 kg, Recorded Delivery) | captured 2026-10-18 |
-| `notification.error.html` | The error notification after Next on an empty step 1 | captured 2026-10-18 |
-| `login-required.html` | What an expired session shows | needs a logged-in session |
-| `create-label.errors.html` | The page after the server rejected a submit | needs a real submit |
-| `confirmation.html` | The page after a successful submit | needs a real submit |
+| `submit.har` | Create, the label URL and the label PDF: requests and responses | needs a real submit |
+| `submit-rejected.har` | A Create the server refuses, to see its error response | needs a real submit |
 | `label.pdf` | A label PDF | needs a real submit |
-| `submit.har` | The Create request/response | needs a real submit |
+| logged-in field inventory | The logged-in create form, if it differs from the guest one | needs a CyLogin session |
 
 ## Portal facts
 
@@ -65,14 +62,7 @@ runs in the wizard's `select` handler when moving forward; earlier steps lock on
 | 5 Addressee | Same fields; country fixed to the destination; free-text postcode, town and street | none |
 | 6 Confirmation | Three required confirmations, add-to-cart, cost summary, **Create** | `/Home/CheckCustomsSummary` |
 
-- **Create** is an AJAX POST of the serialized form to `/OneTimeCustomer/CreateCustomsDeclaration`,
-  with the options appended as `ITEM_OPTIONS[n].ProductId` and content pieces as
-  `CONTENT_PIECES[i].*`. No anti-forgery token. On success the page shows the reference number,
-  the server-generated barcode and the expiry date; there is no redirect (read from the page
-  script, not yet observed).
-- The label PDF comes from `/ReportViewer/BuildReportURL` with
-  `{ParamDictionary:{item:<UI_ITEM_GUID>},ReportType:"Single",ReportName:"Label"}` (or
-  `"StickerLabel"` for A6), which returns a URL opened in a new tab (read from the page script).
+- **Create** posts the whole form in one request; see "Posting directly" below.
 - Destinations use portal ids, not ISO codes (`countries.json`, e.g. 236 United Kingdom, 238 United
   States). Names follow ISO 3166 short names. Three destinations have no ISO code of their own:
   251 Canary Islands, 252 Ceuta and Melilla, 121 Kosovo.
@@ -115,38 +105,47 @@ runs in the wizard's `select` handler when moving forward; earlier steps lock on
   (https://www.cypruspost.post/en/news/επανέναρξη-αποστολών-ταχυδρομικών-αντικειμένων-για-ηπα).
   `CheckCustomsSummary` returns `extraCharges {duties, taxes, surcharges}`.
 
-### Automating the wizard (`dom`)
+### Posting directly (`http`)
 
-- The widgets are Kendo: values must be set through the widget API
-  (`$(el).data("kendoDropDownList").value(x)` then `.trigger("change")`), which only works in the
-  page's MAIN world (`chrome.scripting.executeScript({ world: "MAIN" })`), not from an isolated
-  content script.
-- Order matters: destination → wait for the services call → weight → service and size → wait for
-  the options list (clicking Next while it is empty silently skips step 2) → options one at a time,
-  waiting for each re-render → content pieces → sender postcode → wait for `FindAddress` → street.
-- Errors arrive as Kendo notifications (`.k-notification`, auto-hide after 8 s) and Kendo dialogs
-  (`.k-dialog`), never native dialogs. The notification `#notification` has four templates, told
-  apart by the inner class: `.error-msg` (validation, `notification.error.html`),
-  `.error-create-msg` (a failed Create), `.success-msg` and `.info-msg`; each has an `h3` title
-  and a `p` message, except success, whose message is the `h3`.
-- The page's message catalogue is in hidden inputs named `hidden…` (e.g.
-  `hiddenCompleteMandatoryFields`, `hiddenDocumentRegisteredError`), all in
-  `create-label.empty.html`, so the adapter can match messages against the page's own text.
-- Next is `#ItemNextButton` (`data-wizard-next`). Kendo gives radios, checkboxes and popups random
-  GUID ids on every load: select by `name` and `value`, never by those ids. In the HTML fixtures
-  they are replaced by `kendo-uid-N`, consistently within each file.
-- Typed values are DOM properties, not attributes, so they are not in `create-label.filled.html`;
-  the content-piece grid row, the selected street in its list and the step-6 cost summary
-  (€9.90) are; names and addressee fields are not. The values used were: sender Test Sender,
-  1 Ariadnis, 1010 Lefkosia; addressee Second Tester, 2 Sample Road, Flat 3, London SW1A 1AA; one
-  piece "Plastic car phone holder", HS 392630, made in China (46), 2 × €12.50, 0.2 kg each.
+Read from the guest page's script (the submit handler of `#CreateCustomsDeclaration`); not yet
+observed on the wire.
 
-### Testing against the fixtures
-
-The sanitizer strips every `<script>`, including Kendo's templates, so in a fixture the widgets are
-dead markup: tests can check page detection, selectors and the shipment-to-wizard mapping, but not
-Kendo's behaviour. Do not commit the portal's scripts to bring it back (Kendo UI is commercial);
-the raw copies stay in `raw/js/` for reading only.
+- **Create:** `POST /OneTimeCustomer/CreateCustomsDeclaration`, body
+  `application/x-www-form-urlencoded`: jQuery's `$(form).serialize()` of the whole wizard, not
+  JSON. Field names are in `create-label.fields.json`, e.g. `NatureTrnsctRadioGroup` and
+  `AC_NATURE_OF_TRANSACTION_ID`, `DestinationCountry`, `NC_MEASURED_GROSS_WEIGHT`,
+  `NC_ITEM_CATEGORY_ID`, `AC_SENDER_*`, `AC_ADDRESSEE_*`, and the confirmations
+  `DATA_CORRECTNESS`, `DATA_DANGEROUS_PROHIBITED`, `TERMS`.
+  - Options: the handler appends `ITEM_OPTIONS[n].ProductId` for each ticked option, plus
+    `ITEM_OPTIONS[n].Value` for Insured (60) and COD (61).
+  - Content pieces: `CONTENT_PIECES[i].{NC_ITEM_ASSOCIATED_CONTENT_PIECES_ID, NC_ITEM_ID,
+    AC_DESCRIPTION, NC_TARIFF_HEADING, AC_COUNTRY, NC_COUNTRY_ID, NC_NUMBER_OF_UNITS,
+    NC_UNIT_AMOUNT, NC_UNIT_WEIGHT, NC_DECLARED_VALUE_AMOUNT, NC_NET_WEIGHT}` (the ids are 0 for a
+    new item).
+  - The body also carries about a hundred `hidden…` inputs holding the page's messages and
+    endpoint URLs; the server presumably ignores them.
+  - The guest form has no anti-forgery token.
+- **Response:** JSON. Success is `{success: true, referenceNumber, ItemID, ItemGuid,
+  generatedBarcode, date, dateUntil, cartTotal?}`; a refusal is `{success: false, message}`; an HTTP
+  error shows "Internal Server Error".
+- **Label:** `POST /ReportViewer/BuildReportURL` with
+  `{ParamDictionary: {item: ItemGuid}, ReportType: "Single", ReportName: "Label"}` (or
+  `"StickerLabel"` for A6) returns a URL to the PDF.
+- **Values come from the portal's lookups:** destination ids (`countries.json`), allowed services
+  (`GetServiceByCountryID`), options for a service and weight (`ReadItemOptions`), the sender's
+  postcode and street (`/Senders/GetPostalCodes`, `/Senders/FindAddress`), and HS codes
+  (`ZephyrQuickHS6`, unless ours are used).
+- **Checks the page makes before posting,** which the server may not repeat, so the adapter makes
+  them itself:
+  - the three confirmations are ticked;
+  - the addressee has a phone or an email;
+  - Registered (56) outside Cyprus requires nature `NDOCS`;
+  - content pieces are present when required (see "Rules");
+  - total net weight is ≤ 30 kg;
+  - `NOTHR` carries an explanation;
+  - phones pass intl-tel-input.
+- **Session:** posting from the portal tab (same origin) sends the portal's cookies; which ones the
+  server needs is not known yet.
 
 ## Official API
 
@@ -189,9 +188,12 @@ Where the `Shipment` model and the portal do not line up; each needs a decision 
 
 ## Open questions
 
-- Does the web Create validate HS codes server-side like the API? Needs one real submit.
-- What the logged-in wizard adds or changes (saved sender, catalogue, `isClient`), and where the
-  label is reprinted from. Needs a CyLogin session.
+- Does Create depend on server-side state from the earlier steps (`CheckSelectedItemOption`,
+  `/Home/GetItemOptionsSnapshot`), or does a bare POST work? Needs one real submit.
+- What does the server validate itself (HS codes like the API, phones, postcodes), and what do its
+  refusals look like? Needs one real submit.
+- What the logged-in create form adds or changes: URL, saved sender, catalogue, `isClient`, a
+  token, and where the label is reprinted from. Needs a CyLogin session.
 - Barcode prefix for Recorded Delivery letters (the FAQ lists R registered, C parcel, CE premium
   parcel, E EMS, U untracked goods; the manual's example is `UB000939985CY`).
 - CN22 vs CN23: no Cyprus Post threshold found; the wizard produces one declaration either way.
