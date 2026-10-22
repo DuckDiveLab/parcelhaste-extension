@@ -1,0 +1,998 @@
+{
+  "source": "POST /Senders/GetAllCountries?excludeRestrictedShipmentCountries=True",
+  "capturedAt": "2026-10-18",
+  "countries": [
+    {
+      "id": 2,
+      "name": "Åland Islands"
+    },
+    {
+      "id": 3,
+      "name": "Albania"
+    },
+    {
+      "id": 4,
+      "name": "Algeria"
+    },
+    {
+      "id": 5,
+      "name": "American Samoa"
+    },
+    {
+      "id": 6,
+      "name": "Andorra"
+    },
+    {
+      "id": 7,
+      "name": "Angola"
+    },
+    {
+      "id": 8,
+      "name": "Anguilla"
+    },
+    {
+      "id": 9,
+      "name": "Antarctica"
+    },
+    {
+      "id": 10,
+      "name": "Antigua and Barbuda"
+    },
+    {
+      "id": 11,
+      "name": "Argentina"
+    },
+    {
+      "id": 12,
+      "name": "Armenia"
+    },
+    {
+      "id": 13,
+      "name": "Aruba"
+    },
+    {
+      "id": 14,
+      "name": "Australia"
+    },
+    {
+      "id": 15,
+      "name": "Austria"
+    },
+    {
+      "id": 16,
+      "name": "Azerbaijan"
+    },
+    {
+      "id": 17,
+      "name": "Bahamas (the)"
+    },
+    {
+      "id": 18,
+      "name": "Bahrain"
+    },
+    {
+      "id": 19,
+      "name": "Bangladesh"
+    },
+    {
+      "id": 20,
+      "name": "Barbados"
+    },
+    {
+      "id": 22,
+      "name": "Belgium"
+    },
+    {
+      "id": 23,
+      "name": "Belize"
+    },
+    {
+      "id": 24,
+      "name": "Benin"
+    },
+    {
+      "id": 25,
+      "name": "Bermuda"
+    },
+    {
+      "id": 26,
+      "name": "Bhutan"
+    },
+    {
+      "id": 27,
+      "name": "Bolivia (Plurinational State of)"
+    },
+    {
+      "id": 28,
+      "name": "Bonaire, Sint Eustatius and Saba"
+    },
+    {
+      "id": 29,
+      "name": "Bosnia and Herzegovina"
+    },
+    {
+      "id": 30,
+      "name": "Botswana"
+    },
+    {
+      "id": 31,
+      "name": "Bouvet Island"
+    },
+    {
+      "id": 32,
+      "name": "Brazil"
+    },
+    {
+      "id": 33,
+      "name": "British Indian Ocean Territory (the)"
+    },
+    {
+      "id": 34,
+      "name": "Brunei Darussalam"
+    },
+    {
+      "id": 35,
+      "name": "Bulgaria"
+    },
+    {
+      "id": 36,
+      "name": "Burkina Faso"
+    },
+    {
+      "id": 37,
+      "name": "Burundi"
+    },
+    {
+      "id": 38,
+      "name": "Cabo Verde"
+    },
+    {
+      "id": 39,
+      "name": "Cambodia"
+    },
+    {
+      "id": 40,
+      "name": "Cameroon"
+    },
+    {
+      "id": 41,
+      "name": "Canada"
+    },
+    {
+      "id": 251,
+      "name": "Canary Islands"
+    },
+    {
+      "id": 42,
+      "name": "Cayman Islands (the)"
+    },
+    {
+      "id": 43,
+      "name": "Central African Republic (the)"
+    },
+    {
+      "id": 252,
+      "name": "Ceuta, Melilla"
+    },
+    {
+      "id": 44,
+      "name": "Chad"
+    },
+    {
+      "id": 45,
+      "name": "Chile"
+    },
+    {
+      "id": 46,
+      "name": "China"
+    },
+    {
+      "id": 47,
+      "name": "Christmas Island"
+    },
+    {
+      "id": 48,
+      "name": "Cocos (Keeling) Islands (the)"
+    },
+    {
+      "id": 49,
+      "name": "Colombia"
+    },
+    {
+      "id": 50,
+      "name": "Comoros (the)"
+    },
+    {
+      "id": 51,
+      "name": "Congo (the Democratic Republic of the)"
+    },
+    {
+      "id": 52,
+      "name": "Congo (the)"
+    },
+    {
+      "id": 53,
+      "name": "Cook Islands (the)"
+    },
+    {
+      "id": 54,
+      "name": "Costa Rica"
+    },
+    {
+      "id": 55,
+      "name": "Côte d'Ivoire"
+    },
+    {
+      "id": 56,
+      "name": "Croatia"
+    },
+    {
+      "id": 57,
+      "name": "Cuba"
+    },
+    {
+      "id": 58,
+      "name": "Curaçao"
+    },
+    {
+      "id": 59,
+      "name": "Cyprus"
+    },
+    {
+      "id": 60,
+      "name": "Czechia"
+    },
+    {
+      "id": 61,
+      "name": "Denmark"
+    },
+    {
+      "id": 62,
+      "name": "Djibouti"
+    },
+    {
+      "id": 63,
+      "name": "Dominica"
+    },
+    {
+      "id": 64,
+      "name": "Dominican Republic (the)"
+    },
+    {
+      "id": 65,
+      "name": "Ecuador"
+    },
+    {
+      "id": 66,
+      "name": "Egypt"
+    },
+    {
+      "id": 67,
+      "name": "El Salvador"
+    },
+    {
+      "id": 68,
+      "name": "Equatorial Guinea"
+    },
+    {
+      "id": 69,
+      "name": "Eritrea"
+    },
+    {
+      "id": 70,
+      "name": "Estonia"
+    },
+    {
+      "id": 71,
+      "name": "Eswatini"
+    },
+    {
+      "id": 72,
+      "name": "Ethiopia"
+    },
+    {
+      "id": 73,
+      "name": "Falkland Islands (the) [Malvinas]"
+    },
+    {
+      "id": 74,
+      "name": "Faroe Islands (the)"
+    },
+    {
+      "id": 75,
+      "name": "Fiji"
+    },
+    {
+      "id": 76,
+      "name": "Finland"
+    },
+    {
+      "id": 77,
+      "name": "France"
+    },
+    {
+      "id": 78,
+      "name": "French Guiana"
+    },
+    {
+      "id": 79,
+      "name": "French Polynesia"
+    },
+    {
+      "id": 80,
+      "name": "French Southern Territories (the)"
+    },
+    {
+      "id": 81,
+      "name": "Gabon"
+    },
+    {
+      "id": 82,
+      "name": "Gambia (the)"
+    },
+    {
+      "id": 83,
+      "name": "Georgia"
+    },
+    {
+      "id": 84,
+      "name": "Germany"
+    },
+    {
+      "id": 85,
+      "name": "Ghana"
+    },
+    {
+      "id": 86,
+      "name": "Gibraltar"
+    },
+    {
+      "id": 87,
+      "name": "Greece"
+    },
+    {
+      "id": 88,
+      "name": "Greenland"
+    },
+    {
+      "id": 89,
+      "name": "Grenada"
+    },
+    {
+      "id": 90,
+      "name": "Guadeloupe"
+    },
+    {
+      "id": 91,
+      "name": "Guam"
+    },
+    {
+      "id": 92,
+      "name": "Guatemala"
+    },
+    {
+      "id": 93,
+      "name": "Guernsey"
+    },
+    {
+      "id": 94,
+      "name": "Guinea"
+    },
+    {
+      "id": 95,
+      "name": "Guinea-Bissau"
+    },
+    {
+      "id": 96,
+      "name": "Guyana"
+    },
+    {
+      "id": 97,
+      "name": "Haiti"
+    },
+    {
+      "id": 98,
+      "name": "Heard Island and McDonald Islands"
+    },
+    {
+      "id": 99,
+      "name": "Holy See (the)"
+    },
+    {
+      "id": 100,
+      "name": "Honduras"
+    },
+    {
+      "id": 101,
+      "name": "Hong Kong"
+    },
+    {
+      "id": 102,
+      "name": "Hungary"
+    },
+    {
+      "id": 103,
+      "name": "Iceland"
+    },
+    {
+      "id": 104,
+      "name": "India"
+    },
+    {
+      "id": 105,
+      "name": "Indonesia"
+    },
+    {
+      "id": 108,
+      "name": "Ireland"
+    },
+    {
+      "id": 109,
+      "name": "Isle of Man"
+    },
+    {
+      "id": 110,
+      "name": "Israel"
+    },
+    {
+      "id": 111,
+      "name": "Italy"
+    },
+    {
+      "id": 112,
+      "name": "Jamaica"
+    },
+    {
+      "id": 113,
+      "name": "Japan"
+    },
+    {
+      "id": 114,
+      "name": "Jersey"
+    },
+    {
+      "id": 115,
+      "name": "Jordan"
+    },
+    {
+      "id": 116,
+      "name": "Kazakhstan"
+    },
+    {
+      "id": 117,
+      "name": "Kenya"
+    },
+    {
+      "id": 118,
+      "name": "Kiribati"
+    },
+    {
+      "id": 120,
+      "name": "Korea (the Republic of)"
+    },
+    {
+      "id": 121,
+      "name": "Kosovo"
+    },
+    {
+      "id": 122,
+      "name": "Kuwait"
+    },
+    {
+      "id": 123,
+      "name": "Kyrgyzstan"
+    },
+    {
+      "id": 124,
+      "name": "Lao People's Democratic Republic (the)"
+    },
+    {
+      "id": 125,
+      "name": "Latvia"
+    },
+    {
+      "id": 126,
+      "name": "Lebanon"
+    },
+    {
+      "id": 127,
+      "name": "Lesotho"
+    },
+    {
+      "id": 128,
+      "name": "Liberia"
+    },
+    {
+      "id": 129,
+      "name": "Libya"
+    },
+    {
+      "id": 130,
+      "name": "Liechtenstein"
+    },
+    {
+      "id": 131,
+      "name": "Lithuania"
+    },
+    {
+      "id": 132,
+      "name": "Luxembourg"
+    },
+    {
+      "id": 133,
+      "name": "Macao"
+    },
+    {
+      "id": 134,
+      "name": "Madagascar"
+    },
+    {
+      "id": 135,
+      "name": "Malawi"
+    },
+    {
+      "id": 136,
+      "name": "Malaysia"
+    },
+    {
+      "id": 137,
+      "name": "Maldives"
+    },
+    {
+      "id": 138,
+      "name": "Mali"
+    },
+    {
+      "id": 139,
+      "name": "Malta"
+    },
+    {
+      "id": 140,
+      "name": "Marshall Islands (the)"
+    },
+    {
+      "id": 141,
+      "name": "Martinique"
+    },
+    {
+      "id": 142,
+      "name": "Mauritania"
+    },
+    {
+      "id": 143,
+      "name": "Mauritius"
+    },
+    {
+      "id": 144,
+      "name": "Mayotte"
+    },
+    {
+      "id": 145,
+      "name": "Mexico"
+    },
+    {
+      "id": 146,
+      "name": "Micronesia (Federated States of)"
+    },
+    {
+      "id": 147,
+      "name": "Moldova (the Republic of)"
+    },
+    {
+      "id": 148,
+      "name": "Monaco"
+    },
+    {
+      "id": 149,
+      "name": "Mongolia"
+    },
+    {
+      "id": 150,
+      "name": "Montenegro"
+    },
+    {
+      "id": 151,
+      "name": "Montserrat"
+    },
+    {
+      "id": 152,
+      "name": "Morocco"
+    },
+    {
+      "id": 153,
+      "name": "Mozambique"
+    },
+    {
+      "id": 154,
+      "name": "Myanmar"
+    },
+    {
+      "id": 155,
+      "name": "Namibia"
+    },
+    {
+      "id": 156,
+      "name": "Nauru"
+    },
+    {
+      "id": 157,
+      "name": "Nepal"
+    },
+    {
+      "id": 158,
+      "name": "Netherlands (the)"
+    },
+    {
+      "id": 159,
+      "name": "New Caledonia"
+    },
+    {
+      "id": 160,
+      "name": "New Zealand"
+    },
+    {
+      "id": 161,
+      "name": "Nicaragua"
+    },
+    {
+      "id": 162,
+      "name": "Niger (the)"
+    },
+    {
+      "id": 163,
+      "name": "Nigeria"
+    },
+    {
+      "id": 164,
+      "name": "Niue"
+    },
+    {
+      "id": 165,
+      "name": "Norfolk Island"
+    },
+    {
+      "id": 166,
+      "name": "Northern Mariana Islands (the)"
+    },
+    {
+      "id": 167,
+      "name": "Norway"
+    },
+    {
+      "id": 168,
+      "name": "Oman"
+    },
+    {
+      "id": 169,
+      "name": "Pakistan"
+    },
+    {
+      "id": 170,
+      "name": "Palau"
+    },
+    {
+      "id": 171,
+      "name": "Palestine, State of"
+    },
+    {
+      "id": 172,
+      "name": "Panama"
+    },
+    {
+      "id": 173,
+      "name": "Papua New Guinea"
+    },
+    {
+      "id": 174,
+      "name": "Paraguay"
+    },
+    {
+      "id": 175,
+      "name": "Peru"
+    },
+    {
+      "id": 176,
+      "name": "Philippines (the)"
+    },
+    {
+      "id": 177,
+      "name": "Pitcairn"
+    },
+    {
+      "id": 178,
+      "name": "Poland"
+    },
+    {
+      "id": 179,
+      "name": "Portugal"
+    },
+    {
+      "id": 180,
+      "name": "Puerto Rico"
+    },
+    {
+      "id": 181,
+      "name": "Qatar"
+    },
+    {
+      "id": 182,
+      "name": "Republic of North Macedonia"
+    },
+    {
+      "id": 183,
+      "name": "Réunion"
+    },
+    {
+      "id": 184,
+      "name": "Romania"
+    },
+    {
+      "id": 185,
+      "name": "Russian Federation (the)"
+    },
+    {
+      "id": 186,
+      "name": "Rwanda"
+    },
+    {
+      "id": 187,
+      "name": "Saint Barthélemy"
+    },
+    {
+      "id": 188,
+      "name": "Saint Helena, Ascension and Tristan da Cunha"
+    },
+    {
+      "id": 189,
+      "name": "Saint Kitts and Nevis"
+    },
+    {
+      "id": 190,
+      "name": "Saint Lucia"
+    },
+    {
+      "id": 191,
+      "name": "Saint Martin (French part)"
+    },
+    {
+      "id": 192,
+      "name": "Saint Pierre and Miquelon"
+    },
+    {
+      "id": 258,
+      "name": "Saint Vincent and the Grenadines"
+    },
+    {
+      "id": 194,
+      "name": "Samoa"
+    },
+    {
+      "id": 195,
+      "name": "San Marino"
+    },
+    {
+      "id": 196,
+      "name": "Sao Tome and Principe"
+    },
+    {
+      "id": 197,
+      "name": "Saudi Arabia"
+    },
+    {
+      "id": 198,
+      "name": "Senegal"
+    },
+    {
+      "id": 199,
+      "name": "Serbia"
+    },
+    {
+      "id": 200,
+      "name": "Seychelles"
+    },
+    {
+      "id": 201,
+      "name": "Sierra Leone"
+    },
+    {
+      "id": 202,
+      "name": "Singapore"
+    },
+    {
+      "id": 203,
+      "name": "Sint Maarten (Dutch part)"
+    },
+    {
+      "id": 204,
+      "name": "Slovakia"
+    },
+    {
+      "id": 205,
+      "name": "Slovenia"
+    },
+    {
+      "id": 206,
+      "name": "Solomon Islands"
+    },
+    {
+      "id": 207,
+      "name": "Somalia"
+    },
+    {
+      "id": 208,
+      "name": "South Africa"
+    },
+    {
+      "id": 209,
+      "name": "South Georgia and the South Sandwich Islands"
+    },
+    {
+      "id": 210,
+      "name": "South Sudan"
+    },
+    {
+      "id": 211,
+      "name": "Spain"
+    },
+    {
+      "id": 212,
+      "name": "Sri Lanka"
+    },
+    {
+      "id": 213,
+      "name": "Sudan (the)"
+    },
+    {
+      "id": 214,
+      "name": "Suriname"
+    },
+    {
+      "id": 215,
+      "name": "Svalbard and Jan Mayen"
+    },
+    {
+      "id": 216,
+      "name": "Sweden"
+    },
+    {
+      "id": 217,
+      "name": "Switzerland"
+    },
+    {
+      "id": 218,
+      "name": "Syrian Arab Republic"
+    },
+    {
+      "id": 219,
+      "name": "Taiwan"
+    },
+    {
+      "id": 220,
+      "name": "Tajikistan"
+    },
+    {
+      "id": 221,
+      "name": "Tanzania, United Republic of"
+    },
+    {
+      "id": 222,
+      "name": "Thailand"
+    },
+    {
+      "id": 223,
+      "name": "Timor-Leste"
+    },
+    {
+      "id": 224,
+      "name": "Togo"
+    },
+    {
+      "id": 225,
+      "name": "Tokelau"
+    },
+    {
+      "id": 226,
+      "name": "Tonga"
+    },
+    {
+      "id": 227,
+      "name": "Trinidad and Tobago"
+    },
+    {
+      "id": 228,
+      "name": "Tunisia"
+    },
+    {
+      "id": 229,
+      "name": "Turkey"
+    },
+    {
+      "id": 230,
+      "name": "Turkmenistan"
+    },
+    {
+      "id": 231,
+      "name": "Turks and Caicos Islands (the)"
+    },
+    {
+      "id": 232,
+      "name": "Tuvalu"
+    },
+    {
+      "id": 233,
+      "name": "Uganda"
+    },
+    {
+      "id": 234,
+      "name": "Ukraine"
+    },
+    {
+      "id": 235,
+      "name": "United Arab Emirates (the)"
+    },
+    {
+      "id": 236,
+      "name": "United Kingdom (the)"
+    },
+    {
+      "id": 237,
+      "name": "United States Minor Outlying Islands (the)"
+    },
+    {
+      "id": 238,
+      "name": "United States of America (the)"
+    },
+    {
+      "id": 239,
+      "name": "Uruguay"
+    },
+    {
+      "id": 240,
+      "name": "Uzbekistan"
+    },
+    {
+      "id": 241,
+      "name": "Vanuatu"
+    },
+    {
+      "id": 193,
+      "name": "Vatican City"
+    },
+    {
+      "id": 242,
+      "name": "Venezuela (Bolivarian Republic of)"
+    },
+    {
+      "id": 243,
+      "name": "Viet Nam"
+    },
+    {
+      "id": 244,
+      "name": "Virgin Islands (British)"
+    },
+    {
+      "id": 245,
+      "name": "Virgin Islands (U.S.)"
+    },
+    {
+      "id": 246,
+      "name": "Wallis and Futuna"
+    },
+    {
+      "id": 247,
+      "name": "Western Sahara"
+    },
+    {
+      "id": 248,
+      "name": "Yemen"
+    },
+    {
+      "id": 249,
+      "name": "Zambia"
+    },
+    {
+      "id": 250,
+      "name": "Zimbabwe"
+    }
+  ]
+}
